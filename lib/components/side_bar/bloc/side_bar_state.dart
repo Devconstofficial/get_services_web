@@ -26,7 +26,7 @@ class SideBarState with _$SideBarState {
         CategoriesModel(name: "Arabic",isSelected: false),
       ],
     items: ["Dashboard","Service Provides","Categories","Payment"],
-      pages: [DashboardPage(),ProviderPage(),CategoriesPage(),Container()]
+      pages: [DashboardPage(),ProviderPage(),CategoriesPage(),PaymentPage()]
   );
 }
 

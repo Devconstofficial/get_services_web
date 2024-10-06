@@ -19,3 +19,4 @@ const Color lightPurpleColor = Color(0xffDBA5FF);
 const Color lightOrangeColor = Color(0xffFF8F6D);
 const Color tableHeaderColor = Color(0xffF1f4f9);
 const Color arrowColor = Color(0xffE7E9EE);
+const Color borderColor = Color(0xff9a9a96);

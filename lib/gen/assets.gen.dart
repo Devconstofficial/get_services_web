@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/add_image.png
+  AssetGenImage get addImage =>
+      const AssetGenImage('assets/images/add_image.png');
+
   /// File path: assets/images/bell.svg
   String get bell => 'assets/images/bell.svg';
 
@@ -23,6 +27,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/check.svg
   String get check => 'assets/images/check.svg';
+
+  /// File path: assets/images/close.svg
+  String get close => 'assets/images/close.svg';
 
   /// File path: assets/images/dashboard_pending_requests.png
   AssetGenImage get dashboardPendingRequests =>
@@ -84,10 +91,12 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        addImage,
         bell,
         binIcon,
         chartUp,
         check,
+        close,
         dashboardPendingRequests,
         dashboardTotalProviders,
         dashboardTotalUsers,

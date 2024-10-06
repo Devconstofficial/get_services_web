@@ -19,10 +19,41 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
 
     on<CategoriesEvent>((event, emit) async {
       await event.map(
-        changeDeleteMode: (_) async {
-          emit(state.copyWith(isDeletionMode: _.value));
+        changeDeleteModeCategory: (_) async {
+          emit(state.copyWith(isDeletionModeCategory: _.value));
         },
+        setCurrentCategory: (_) async {
 
+          List<CategoriesData> categoriesModel = List.from(state.categories);
+          if(_.index < 0 || _.index > categoriesModel.length-1){
+            for(int i = 0;i<categoriesModel.length;i++){
+              if(i  == 0){
+                CategoriesData updatedData = categoriesModel[_.index].copyWith(isUpdating: true);
+                categoriesModel[_.index] = updatedData;
+              }
+              else{
+                CategoriesData updatedData = categoriesModel[i].copyWith(isUpdating: false);
+                categoriesModel[i] = updatedData;
+              }
+            }
+          }
+          else{
+            for(int i = 0;i<categoriesModel.length;i++){
+              if(i  == _.index){
+                CategoriesData updatedData = categoriesModel[_.index].copyWith(isUpdating: true);
+                categoriesModel[_.index] = updatedData;
+              }
+              else{
+                CategoriesData updatedData = categoriesModel[i].copyWith(isUpdating: false);
+                categoriesModel[i] = updatedData;
+              }
+            }
+          }
+          emit(state.copyWith(categories: categoriesModel));
+        },
+        changeDeleteModeSubCategory: (_) async {
+          emit(state.copyWith(isDeletionModeSubcategory: _.value));
+        },
       );
     });
 

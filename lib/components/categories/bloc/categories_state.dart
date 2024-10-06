@@ -4,12 +4,14 @@ part of 'categories_bloc.dart';
 @freezed
 class CategoriesState with _$CategoriesState {
   const factory CategoriesState({
-    required bool isDeletionMode,
+    required bool isDeletionModeCategory,
+    required bool isDeletionModeSubcategory,
     required List<CategoriesData> categories,
   }) = _CategoriesState;
 
   factory CategoriesState.initial() => CategoriesState(
-      isDeletionMode: false,
+      isDeletionModeCategory: false,
+    isDeletionModeSubcategory: false,
       categories:[
         CategoriesData(
           category: "Home Repairs and Services",

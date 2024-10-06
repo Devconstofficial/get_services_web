@@ -16,42 +16,54 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CategoriesEvent {
-  bool get value => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool value) changeDeleteMode,
+    required TResult Function(bool value) changeDeleteModeCategory,
+    required TResult Function(int index) setCurrentCategory,
+    required TResult Function(bool value) changeDeleteModeSubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool value)? changeDeleteMode,
+    TResult? Function(bool value)? changeDeleteModeCategory,
+    TResult? Function(int index)? setCurrentCategory,
+    TResult? Function(bool value)? changeDeleteModeSubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool value)? changeDeleteMode,
+    TResult Function(bool value)? changeDeleteModeCategory,
+    TResult Function(int index)? setCurrentCategory,
+    TResult Function(bool value)? changeDeleteModeSubCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ChangeDeleteMode value) changeDeleteMode,
+    required TResult Function(_ChangeDeleteModeCategory value)
+        changeDeleteModeCategory,
+    required TResult Function(_SetCurrentCategory value) setCurrentCategory,
+    required TResult Function(_ChangeDeleteModeSubCategory value)
+        changeDeleteModeSubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ChangeDeleteMode value)? changeDeleteMode,
+    TResult? Function(_ChangeDeleteModeCategory value)?
+        changeDeleteModeCategory,
+    TResult? Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult? Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ChangeDeleteMode value)? changeDeleteMode,
+    TResult Function(_ChangeDeleteModeCategory value)? changeDeleteModeCategory,
+    TResult Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CategoriesEventCopyWith<CategoriesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +72,6 @@ abstract class $CategoriesEventCopyWith<$Res> {
   factory $CategoriesEventCopyWith(
           CategoriesEvent value, $Res Function(CategoriesEvent) then) =
       _$CategoriesEventCopyWithImpl<$Res, CategoriesEvent>;
-  @useResult
-  $Res call({bool value});
 }
 
 /// @nodoc
@@ -73,38 +83,25 @@ class _$CategoriesEventCopyWithImpl<$Res, $Val extends CategoriesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$ChangeDeleteModeImplCopyWith<$Res>
-    implements $CategoriesEventCopyWith<$Res> {
-  factory _$$ChangeDeleteModeImplCopyWith(_$ChangeDeleteModeImpl value,
-          $Res Function(_$ChangeDeleteModeImpl) then) =
-      __$$ChangeDeleteModeImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$ChangeDeleteModeCategoryImplCopyWith<$Res> {
+  factory _$$ChangeDeleteModeCategoryImplCopyWith(
+          _$ChangeDeleteModeCategoryImpl value,
+          $Res Function(_$ChangeDeleteModeCategoryImpl) then) =
+      __$$ChangeDeleteModeCategoryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool value});
 }
 
 /// @nodoc
-class __$$ChangeDeleteModeImplCopyWithImpl<$Res>
-    extends _$CategoriesEventCopyWithImpl<$Res, _$ChangeDeleteModeImpl>
-    implements _$$ChangeDeleteModeImplCopyWith<$Res> {
-  __$$ChangeDeleteModeImplCopyWithImpl(_$ChangeDeleteModeImpl _value,
-      $Res Function(_$ChangeDeleteModeImpl) _then)
+class __$$ChangeDeleteModeCategoryImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$ChangeDeleteModeCategoryImpl>
+    implements _$$ChangeDeleteModeCategoryImplCopyWith<$Res> {
+  __$$ChangeDeleteModeCategoryImplCopyWithImpl(
+      _$ChangeDeleteModeCategoryImpl _value,
+      $Res Function(_$ChangeDeleteModeCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +109,7 @@ class __$$ChangeDeleteModeImplCopyWithImpl<$Res>
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$ChangeDeleteModeImpl(
+    return _then(_$ChangeDeleteModeCategoryImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -123,22 +120,22 @@ class __$$ChangeDeleteModeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeDeleteModeImpl implements _ChangeDeleteMode {
-  const _$ChangeDeleteModeImpl({required this.value});
+class _$ChangeDeleteModeCategoryImpl implements _ChangeDeleteModeCategory {
+  const _$ChangeDeleteModeCategoryImpl({required this.value});
 
   @override
   final bool value;
 
   @override
   String toString() {
-    return 'CategoriesEvent.changeDeleteMode(value: $value)';
+    return 'CategoriesEvent.changeDeleteModeCategory(value: $value)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeDeleteModeImpl &&
+            other is _$ChangeDeleteModeCategoryImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -148,34 +145,40 @@ class _$ChangeDeleteModeImpl implements _ChangeDeleteMode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeDeleteModeImplCopyWith<_$ChangeDeleteModeImpl> get copyWith =>
-      __$$ChangeDeleteModeImplCopyWithImpl<_$ChangeDeleteModeImpl>(
-          this, _$identity);
+  _$$ChangeDeleteModeCategoryImplCopyWith<_$ChangeDeleteModeCategoryImpl>
+      get copyWith => __$$ChangeDeleteModeCategoryImplCopyWithImpl<
+          _$ChangeDeleteModeCategoryImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool value) changeDeleteMode,
+    required TResult Function(bool value) changeDeleteModeCategory,
+    required TResult Function(int index) setCurrentCategory,
+    required TResult Function(bool value) changeDeleteModeSubCategory,
   }) {
-    return changeDeleteMode(value);
+    return changeDeleteModeCategory(value);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool value)? changeDeleteMode,
+    TResult? Function(bool value)? changeDeleteModeCategory,
+    TResult? Function(int index)? setCurrentCategory,
+    TResult? Function(bool value)? changeDeleteModeSubCategory,
   }) {
-    return changeDeleteMode?.call(value);
+    return changeDeleteModeCategory?.call(value);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool value)? changeDeleteMode,
+    TResult Function(bool value)? changeDeleteModeCategory,
+    TResult Function(int index)? setCurrentCategory,
+    TResult Function(bool value)? changeDeleteModeSubCategory,
     required TResult orElse(),
   }) {
-    if (changeDeleteMode != null) {
-      return changeDeleteMode(value);
+    if (changeDeleteModeCategory != null) {
+      return changeDeleteModeCategory(value);
     }
     return orElse();
   }
@@ -183,47 +186,353 @@ class _$ChangeDeleteModeImpl implements _ChangeDeleteMode {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ChangeDeleteMode value) changeDeleteMode,
+    required TResult Function(_ChangeDeleteModeCategory value)
+        changeDeleteModeCategory,
+    required TResult Function(_SetCurrentCategory value) setCurrentCategory,
+    required TResult Function(_ChangeDeleteModeSubCategory value)
+        changeDeleteModeSubCategory,
   }) {
-    return changeDeleteMode(this);
+    return changeDeleteModeCategory(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ChangeDeleteMode value)? changeDeleteMode,
+    TResult? Function(_ChangeDeleteModeCategory value)?
+        changeDeleteModeCategory,
+    TResult? Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult? Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
   }) {
-    return changeDeleteMode?.call(this);
+    return changeDeleteModeCategory?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ChangeDeleteMode value)? changeDeleteMode,
+    TResult Function(_ChangeDeleteModeCategory value)? changeDeleteModeCategory,
+    TResult Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
     required TResult orElse(),
   }) {
-    if (changeDeleteMode != null) {
-      return changeDeleteMode(this);
+    if (changeDeleteModeCategory != null) {
+      return changeDeleteModeCategory(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChangeDeleteMode implements CategoriesEvent {
-  const factory _ChangeDeleteMode({required final bool value}) =
-      _$ChangeDeleteModeImpl;
+abstract class _ChangeDeleteModeCategory implements CategoriesEvent {
+  const factory _ChangeDeleteModeCategory({required final bool value}) =
+      _$ChangeDeleteModeCategoryImpl;
+
+  bool get value;
+  @JsonKey(ignore: true)
+  _$$ChangeDeleteModeCategoryImplCopyWith<_$ChangeDeleteModeCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetCurrentCategoryImplCopyWith<$Res> {
+  factory _$$SetCurrentCategoryImplCopyWith(_$SetCurrentCategoryImpl value,
+          $Res Function(_$SetCurrentCategoryImpl) then) =
+      __$$SetCurrentCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$SetCurrentCategoryImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$SetCurrentCategoryImpl>
+    implements _$$SetCurrentCategoryImplCopyWith<$Res> {
+  __$$SetCurrentCategoryImplCopyWithImpl(_$SetCurrentCategoryImpl _value,
+      $Res Function(_$SetCurrentCategoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$SetCurrentCategoryImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetCurrentCategoryImpl implements _SetCurrentCategory {
+  const _$SetCurrentCategoryImpl({required this.index});
 
   @override
-  bool get value;
+  final int index;
+
   @override
+  String toString() {
+    return 'CategoriesEvent.setCurrentCategory(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetCurrentCategoryImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
   @JsonKey(ignore: true)
-  _$$ChangeDeleteModeImplCopyWith<_$ChangeDeleteModeImpl> get copyWith =>
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetCurrentCategoryImplCopyWith<_$SetCurrentCategoryImpl> get copyWith =>
+      __$$SetCurrentCategoryImplCopyWithImpl<_$SetCurrentCategoryImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool value) changeDeleteModeCategory,
+    required TResult Function(int index) setCurrentCategory,
+    required TResult Function(bool value) changeDeleteModeSubCategory,
+  }) {
+    return setCurrentCategory(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool value)? changeDeleteModeCategory,
+    TResult? Function(int index)? setCurrentCategory,
+    TResult? Function(bool value)? changeDeleteModeSubCategory,
+  }) {
+    return setCurrentCategory?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool value)? changeDeleteModeCategory,
+    TResult Function(int index)? setCurrentCategory,
+    TResult Function(bool value)? changeDeleteModeSubCategory,
+    required TResult orElse(),
+  }) {
+    if (setCurrentCategory != null) {
+      return setCurrentCategory(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeDeleteModeCategory value)
+        changeDeleteModeCategory,
+    required TResult Function(_SetCurrentCategory value) setCurrentCategory,
+    required TResult Function(_ChangeDeleteModeSubCategory value)
+        changeDeleteModeSubCategory,
+  }) {
+    return setCurrentCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeDeleteModeCategory value)?
+        changeDeleteModeCategory,
+    TResult? Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult? Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
+  }) {
+    return setCurrentCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeDeleteModeCategory value)? changeDeleteModeCategory,
+    TResult Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
+    required TResult orElse(),
+  }) {
+    if (setCurrentCategory != null) {
+      return setCurrentCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetCurrentCategory implements CategoriesEvent {
+  const factory _SetCurrentCategory({required final int index}) =
+      _$SetCurrentCategoryImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$SetCurrentCategoryImplCopyWith<_$SetCurrentCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
+abstract class _$$ChangeDeleteModeSubCategoryImplCopyWith<$Res> {
+  factory _$$ChangeDeleteModeSubCategoryImplCopyWith(
+          _$ChangeDeleteModeSubCategoryImpl value,
+          $Res Function(_$ChangeDeleteModeSubCategoryImpl) then) =
+      __$$ChangeDeleteModeSubCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool value});
+}
+
+/// @nodoc
+class __$$ChangeDeleteModeSubCategoryImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res,
+        _$ChangeDeleteModeSubCategoryImpl>
+    implements _$$ChangeDeleteModeSubCategoryImplCopyWith<$Res> {
+  __$$ChangeDeleteModeSubCategoryImplCopyWithImpl(
+      _$ChangeDeleteModeSubCategoryImpl _value,
+      $Res Function(_$ChangeDeleteModeSubCategoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$ChangeDeleteModeSubCategoryImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeDeleteModeSubCategoryImpl
+    implements _ChangeDeleteModeSubCategory {
+  const _$ChangeDeleteModeSubCategoryImpl({required this.value});
+
+  @override
+  final bool value;
+
+  @override
+  String toString() {
+    return 'CategoriesEvent.changeDeleteModeSubCategory(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeDeleteModeSubCategoryImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeDeleteModeSubCategoryImplCopyWith<_$ChangeDeleteModeSubCategoryImpl>
+      get copyWith => __$$ChangeDeleteModeSubCategoryImplCopyWithImpl<
+          _$ChangeDeleteModeSubCategoryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool value) changeDeleteModeCategory,
+    required TResult Function(int index) setCurrentCategory,
+    required TResult Function(bool value) changeDeleteModeSubCategory,
+  }) {
+    return changeDeleteModeSubCategory(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool value)? changeDeleteModeCategory,
+    TResult? Function(int index)? setCurrentCategory,
+    TResult? Function(bool value)? changeDeleteModeSubCategory,
+  }) {
+    return changeDeleteModeSubCategory?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool value)? changeDeleteModeCategory,
+    TResult Function(int index)? setCurrentCategory,
+    TResult Function(bool value)? changeDeleteModeSubCategory,
+    required TResult orElse(),
+  }) {
+    if (changeDeleteModeSubCategory != null) {
+      return changeDeleteModeSubCategory(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeDeleteModeCategory value)
+        changeDeleteModeCategory,
+    required TResult Function(_SetCurrentCategory value) setCurrentCategory,
+    required TResult Function(_ChangeDeleteModeSubCategory value)
+        changeDeleteModeSubCategory,
+  }) {
+    return changeDeleteModeSubCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeDeleteModeCategory value)?
+        changeDeleteModeCategory,
+    TResult? Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult? Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
+  }) {
+    return changeDeleteModeSubCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeDeleteModeCategory value)? changeDeleteModeCategory,
+    TResult Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
+    required TResult orElse(),
+  }) {
+    if (changeDeleteModeSubCategory != null) {
+      return changeDeleteModeSubCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeDeleteModeSubCategory implements CategoriesEvent {
+  const factory _ChangeDeleteModeSubCategory({required final bool value}) =
+      _$ChangeDeleteModeSubCategoryImpl;
+
+  bool get value;
+  @JsonKey(ignore: true)
+  _$$ChangeDeleteModeSubCategoryImplCopyWith<_$ChangeDeleteModeSubCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CategoriesState {
-  bool get isDeletionMode => throw _privateConstructorUsedError;
+  bool get isDeletionModeCategory => throw _privateConstructorUsedError;
+  bool get isDeletionModeSubcategory => throw _privateConstructorUsedError;
   List<CategoriesData> get categories => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -237,7 +546,10 @@ abstract class $CategoriesStateCopyWith<$Res> {
           CategoriesState value, $Res Function(CategoriesState) then) =
       _$CategoriesStateCopyWithImpl<$Res, CategoriesState>;
   @useResult
-  $Res call({bool isDeletionMode, List<CategoriesData> categories});
+  $Res call(
+      {bool isDeletionModeCategory,
+      bool isDeletionModeSubcategory,
+      List<CategoriesData> categories});
 }
 
 /// @nodoc
@@ -253,13 +565,18 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isDeletionMode = null,
+    Object? isDeletionModeCategory = null,
+    Object? isDeletionModeSubcategory = null,
     Object? categories = null,
   }) {
     return _then(_value.copyWith(
-      isDeletionMode: null == isDeletionMode
-          ? _value.isDeletionMode
-          : isDeletionMode // ignore: cast_nullable_to_non_nullable
+      isDeletionModeCategory: null == isDeletionModeCategory
+          ? _value.isDeletionModeCategory
+          : isDeletionModeCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeletionModeSubcategory: null == isDeletionModeSubcategory
+          ? _value.isDeletionModeSubcategory
+          : isDeletionModeSubcategory // ignore: cast_nullable_to_non_nullable
               as bool,
       categories: null == categories
           ? _value.categories
@@ -277,7 +594,10 @@ abstract class _$$CategoriesStateImplCopyWith<$Res>
       __$$CategoriesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isDeletionMode, List<CategoriesData> categories});
+  $Res call(
+      {bool isDeletionModeCategory,
+      bool isDeletionModeSubcategory,
+      List<CategoriesData> categories});
 }
 
 /// @nodoc
@@ -291,13 +611,18 @@ class __$$CategoriesStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isDeletionMode = null,
+    Object? isDeletionModeCategory = null,
+    Object? isDeletionModeSubcategory = null,
     Object? categories = null,
   }) {
     return _then(_$CategoriesStateImpl(
-      isDeletionMode: null == isDeletionMode
-          ? _value.isDeletionMode
-          : isDeletionMode // ignore: cast_nullable_to_non_nullable
+      isDeletionModeCategory: null == isDeletionModeCategory
+          ? _value.isDeletionModeCategory
+          : isDeletionModeCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeletionModeSubcategory: null == isDeletionModeSubcategory
+          ? _value.isDeletionModeSubcategory
+          : isDeletionModeSubcategory // ignore: cast_nullable_to_non_nullable
               as bool,
       categories: null == categories
           ? _value._categories
@@ -311,12 +636,15 @@ class __$$CategoriesStateImplCopyWithImpl<$Res>
 
 class _$CategoriesStateImpl implements _CategoriesState {
   const _$CategoriesStateImpl(
-      {required this.isDeletionMode,
+      {required this.isDeletionModeCategory,
+      required this.isDeletionModeSubcategory,
       required final List<CategoriesData> categories})
       : _categories = categories;
 
   @override
-  final bool isDeletionMode;
+  final bool isDeletionModeCategory;
+  @override
+  final bool isDeletionModeSubcategory;
   final List<CategoriesData> _categories;
   @override
   List<CategoriesData> get categories {
@@ -327,7 +655,7 @@ class _$CategoriesStateImpl implements _CategoriesState {
 
   @override
   String toString() {
-    return 'CategoriesState(isDeletionMode: $isDeletionMode, categories: $categories)';
+    return 'CategoriesState(isDeletionModeCategory: $isDeletionModeCategory, isDeletionModeSubcategory: $isDeletionModeSubcategory, categories: $categories)';
   }
 
   @override
@@ -335,14 +663,20 @@ class _$CategoriesStateImpl implements _CategoriesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoriesStateImpl &&
-            (identical(other.isDeletionMode, isDeletionMode) ||
-                other.isDeletionMode == isDeletionMode) &&
+            (identical(other.isDeletionModeCategory, isDeletionModeCategory) ||
+                other.isDeletionModeCategory == isDeletionModeCategory) &&
+            (identical(other.isDeletionModeSubcategory,
+                    isDeletionModeSubcategory) ||
+                other.isDeletionModeSubcategory == isDeletionModeSubcategory) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isDeletionMode,
+  int get hashCode => Object.hash(
+      runtimeType,
+      isDeletionModeCategory,
+      isDeletionModeSubcategory,
       const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
@@ -355,11 +689,14 @@ class _$CategoriesStateImpl implements _CategoriesState {
 
 abstract class _CategoriesState implements CategoriesState {
   const factory _CategoriesState(
-      {required final bool isDeletionMode,
+      {required final bool isDeletionModeCategory,
+      required final bool isDeletionModeSubcategory,
       required final List<CategoriesData> categories}) = _$CategoriesStateImpl;
 
   @override
-  bool get isDeletionMode;
+  bool get isDeletionModeCategory;
+  @override
+  bool get isDeletionModeSubcategory;
   @override
   List<CategoriesData> get categories;
   @override

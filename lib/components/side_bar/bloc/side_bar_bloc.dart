@@ -7,6 +7,7 @@ import 'package:get_services/components/providers/screens/provider_page.dart';
 import '../../../gen/assets.gen.dart';
 import '../../categories/screens/categories_page.dart';
 import '../../dashboard/screens/dashboard_page.dart';
+import '../../payments/screens/payment_page.dart';
 
 part 'side_bar_event.dart';
 part 'side_bar_state.dart';
