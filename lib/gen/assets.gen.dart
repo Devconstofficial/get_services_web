@@ -80,7 +80,7 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/sidebar_logo.png
   AssetGenImage get sidebarLogo =>
-      const AssetGenImage('assets/images/sidebar_logo.png');
+      const AssetGenImage('assets/images/logo.png');
 
   /// File path: assets/images/uk_flag.png
   AssetGenImage get ukFlag => const AssetGenImage('assets/images/uk_flag.png');
