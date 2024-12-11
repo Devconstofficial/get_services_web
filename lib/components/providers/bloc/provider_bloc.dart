@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_services/common_model/categories_model.dart';
-import 'package:intl/intl.dart';
 import '../../dashboard/model/provider_request.dart';
 
 part 'provider_event.dart';

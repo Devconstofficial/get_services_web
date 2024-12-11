@@ -12,12 +12,12 @@ class TrianglePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint _paint = new Paint();
-    _paint.strokeWidth = 2.0;
-    _paint.color = color;
-    _paint.style = PaintingStyle.fill;
+    Paint paint = Paint();
+    paint.strokeWidth = 2.0;
+    paint.color = color;
+    paint.style = PaintingStyle.fill;
 
-    Path path = new Path();
+    Path path = Path();
     if (isDown) {
       path.moveTo(0.0, -1.0);
       path.lineTo(size.width, -1.0);
@@ -28,7 +28,7 @@ class TrianglePainter extends CustomPainter {
       path.lineTo(size.width, size.height + 1);
     }
 
-    canvas.drawPath(path, _paint);
+    canvas.drawPath(path, paint);
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -88,12 +89,12 @@ class _DashboardFormState extends State<DashboardForm> {
           builder: (context, constraint) {
             return SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 24),
+                padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 24),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Dashboard",
+                      "dashboard".tr(),
                       style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: Adaptive.sp(14)),
@@ -102,16 +103,16 @@ class _DashboardFormState extends State<DashboardForm> {
                       children: [
                         Expanded(
                           child: _buildStatCard(
-                              "Total Users", NumberFormat("##,###").format(state.totalUsers).toString(), Assets.images.dashboardTotalUsers.path,true),
+                              "totalUsers".tr(), NumberFormat("##,###").format(state.totalUsers).toString(), Assets.images.dashboardTotalUsers.path,true),
                         ),
                         SizedBox(width: Adaptive.sp(12),),
                         Expanded(
-                          child: _buildStatCard("Total Providers",
+                          child: _buildStatCard("totalProviders".tr(),
                               NumberFormat("##,###").format(state.totalProviders).toString(),Assets.images.dashboardTotalProviders.path,true),
                         ),
                         SizedBox(width: Adaptive.sp(12),),
                         Expanded(
-                          child: _buildStatCard("Req Pending",
+                          child: _buildStatCard("reqPending".tr(),
                               NumberFormat("##,###").format(state.requestsPending).toString(),  Assets.images.dashboardPendingRequests.path,false),
                         ),
                         if(constraint.maxWidth>690)...[
@@ -121,7 +122,7 @@ class _DashboardFormState extends State<DashboardForm> {
                     ),
                     SizedBox(height: Adaptive.sp(14)),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 16.0,horizontal: 20),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 20),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20)
@@ -129,10 +130,10 @@ class _DashboardFormState extends State<DashboardForm> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _headingWithDropDown("Revenue",state),
+                          _headingWithDropDown("revenue".tr(),state),
                           SizedBox(height: Adaptive.sp(14)),
                       SfCartesianChart(
-                        legend: Legend(isVisible: true,
+                        legend: const Legend(isVisible: true,
                         position: LegendPosition.bottom,
                           isResponsive: true
                         ),
@@ -143,7 +144,7 @@ class _DashboardFormState extends State<DashboardForm> {
                         series: <CartesianSeries>[
                           // Spline area chart for last month
                           SplineAreaSeries<RevenueData, num>(
-                            name: 'Last Month',
+                            name: "lastMonth".tr(),
                             dataSource: state.revenueData,
                             xValueMapper: (RevenueData data, _) => data.value, // Use numeric value
                             yValueMapper: (RevenueData data, _) => data.lastMonth,
@@ -153,7 +154,7 @@ class _DashboardFormState extends State<DashboardForm> {
                           ),
                           // Spline area chart for this month
                           SplineAreaSeries<RevenueData, num>(
-                            name: 'This Month',
+                            name: "thisMonth".tr(),
                             dataSource: state.revenueData,
                             xValueMapper: (RevenueData data, _) => data.value, // Use numeric value
                             yValueMapper: (RevenueData data, _) => data.thisMonth,
@@ -233,7 +234,7 @@ class _DashboardFormState extends State<DashboardForm> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Icon(
                       Icons.keyboard_arrow_down_sharp,
                       color: colorDropdownGrey.withOpacity(0.7),
@@ -272,7 +273,7 @@ class _DashboardFormState extends State<DashboardForm> {
                   context.read<DashBoardBloc>().add(DashBoardEvent.setCurrentMonth(index: state.months.indexOf(text)));
                 }
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: InputBorder.none
               ),
             ),
@@ -324,7 +325,7 @@ class _DashboardFormState extends State<DashboardForm> {
               width: Adaptive.sp(20),)
             ],
           ),
-          Spacer(),
+          const Spacer(),
           if(showBottom)
             Row(
             children: [
@@ -340,7 +341,7 @@ class _DashboardFormState extends State<DashboardForm> {
                 ),
               ),
               Text(
-                "Up from October",
+                "upFromOctober".tr(),
                 style: GoogleFonts.nunitoSans(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w500,
@@ -357,18 +358,18 @@ class _DashboardFormState extends State<DashboardForm> {
 
   Widget _buildProviderTable(List<ProviderRequest> requests,DashBoardState state) {
     return  Container(
-      padding: EdgeInsets.symmetric(vertical: 16.0,horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 20),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20)
       ),
       child: Column(
         children: [
-          _headingWithDropDown("Action Provider Requests",state),
+          _headingWithDropDown("activeProviderRequests".tr(),state),
           SizedBox(height: Adaptive.sp(8),),
           Container(
             padding: EdgeInsets.symmetric(vertical: Adaptive.sp(12)),
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               minWidth: 800
             ),
             decoration: BoxDecoration(
@@ -378,20 +379,20 @@ class _DashboardFormState extends State<DashboardForm> {
             ),
             child: Row(
               children: [
-                Expanded(child: Center(child: Text('Provider ID', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,
+                Expanded(child: Center(child: Text("providerId".tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,
                   fontSize: 11.5.sp,)))),
-                Expanded(child: Center(child: Text('Provider Name', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Location (City)', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Category', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Status', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Actions', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text("providerName".tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text("location".tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text("category".tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text("status".tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text("actions".tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
 
               ],
             ),
           ),
           Theme(
             data: Theme.of(context).copyWith(
-              dividerTheme: DividerThemeData(
+              dividerTheme: const DividerThemeData(
                 color:lightGrayColor,
                 thickness: 0.6
 
@@ -466,7 +467,7 @@ class _DashboardFormState extends State<DashboardForm> {
                       child: Row(
                         children: [
                           Text(
-                            "First Page",
+                            "firstPage".tr(),
                             style: GoogleFonts.nunitoSans(
                               color: colorDropdownGrey.withOpacity(state.currentTablePageIndex > 0?0.8:0.5),
                               fontSize: 11.sp,
@@ -505,7 +506,7 @@ class _DashboardFormState extends State<DashboardForm> {
                           ),
                           SizedBox(width: Adaptive.sp(8),),
                           Text(
-                            "Previous Page",
+                            "previousPage".tr(),
                             style: GoogleFonts.nunitoSans(
                               color: colorDropdownGrey.withOpacity(state.currentTablePageIndex > 0?0.8:0.5),
                               fontSize: 11.sp,
@@ -519,7 +520,7 @@ class _DashboardFormState extends State<DashboardForm> {
                 ],
               ),
 
-                Text("Showing ${(state.currentTablePageIndex+1)}-${  ((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?(state.currentTablePageIndex) + paginatorController.rowsPerPage:paginatorController.rowCount} of ${paginatorController.rowCount}",
+                Text("${"showing".tr()} ${(state.currentTablePageIndex+1)}-${  ((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?(state.currentTablePageIndex) + paginatorController.rowsPerPage:paginatorController.rowCount}${"of".tr()}${paginatorController.rowCount}",
                   style:GoogleFonts.nunitoSans(
                     color: colorDropdownGrey.withOpacity(0.8),
                     fontSize: 11.sp,
@@ -542,7 +543,7 @@ class _DashboardFormState extends State<DashboardForm> {
                       child: Row(
                         children: [
                           Text(
-                            "Next Page",
+                            "nextPage".tr(),
                             style: GoogleFonts.nunitoSans(
                               color: colorDropdownGrey.withOpacity(((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?0.8:0.5),
                               fontSize: 11.sp,
@@ -574,7 +575,7 @@ class _DashboardFormState extends State<DashboardForm> {
                       child: Row(
                         children: [
                           Text(
-                            "Last Page",
+                            "lastPage".tr(),
                             style: GoogleFonts.nunitoSans(
                               color: colorDropdownGrey.withOpacity(((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?0.8:0.5),
                               fontSize: 11.sp,
@@ -614,16 +615,16 @@ class ProviderDataSource extends DataTableSource {
       DataCell(Center(child: Text(request.location,style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w500,color: appBlackColor.withOpacity(0.9),fontSize: 11.sp)))),
       DataCell(Center(child: Text(request.category,style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w500,color: appBlackColor.withOpacity(0.9),fontSize: 11.sp)))),
       DataCell(Center(child: Container(
-        padding: EdgeInsets.symmetric(vertical: 3,horizontal: 6),
+        padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 6),
 
           decoration: BoxDecoration(
-            color: request.status.toLowerCase() == "active"?greenBlueColor.withOpacity(0.2):
-    request.status.toLowerCase() == "pending"?purpleColor.withOpacity(0.2):redColor.withOpacity(0.2),
+            color: request.status == "active".tr()?greenBlueColor.withOpacity(0.2):
+    request.status == "pending".tr()?purpleColor.withOpacity(0.2):redColor.withOpacity(0.2),
             borderRadius: BorderRadius.circular(4)
           ),
           child: Text(request.status,style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w500,fontSize: 10.sp,
-            color: request.status.toLowerCase() == "active"?greenBlueColor.withOpacity(1):
-            request.status.toLowerCase() == "pending"?purpleColor.withOpacity(1):redColor,))))),
+            color: request.status == "active".tr()?greenBlueColor.withOpacity(1):
+            request.status == "pending".tr()?purpleColor.withOpacity(1):redColor,))))),
       DataCell(Center(
         child: Container(
           decoration: BoxDecoration(
@@ -635,9 +636,9 @@ class ProviderDataSource extends DataTableSource {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                  constraints: BoxConstraints(),
+                  constraints: const BoxConstraints(),
                   padding: EdgeInsets.zero,
-                  visualDensity: VisualDensity(horizontal: 2,vertical: -4),
+                  visualDensity: const VisualDensity(horizontal: 2,vertical: -4),
                   icon: SvgPicture.asset(Assets.images.editIcon,width: Adaptive.sp(13),), onPressed: () {
                 // Add edit action here
               }),
@@ -647,9 +648,9 @@ class ProviderDataSource extends DataTableSource {
                 height: Adaptive.sp(18),
               ),
               IconButton(
-                  constraints: BoxConstraints(),
+                  constraints: const BoxConstraints(),
                   padding: EdgeInsets.zero,
-                  visualDensity: VisualDensity(horizontal: 2,vertical: -4),
+                  visualDensity: const VisualDensity(horizontal: 2,vertical: -4),
                   icon: SvgPicture.asset(Assets.images.binIcon, width: Adaptive.sp(13)), onPressed: () {
                 // Add delete action here
               }),

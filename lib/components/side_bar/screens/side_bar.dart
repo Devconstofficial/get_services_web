@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_services/components/side_bar/bloc/side_bar_bloc.dart';
@@ -48,7 +49,7 @@ class SideBarWidget extends StatelessWidget {
                               onExit: (_) {
                                 context.read<SideBarBloc>().add(const SideBarEvent.setSideBarHoverIndex(hoveredIndex: null));
                               },
-                              cursor: SystemMouseCursors.click, // Change the cursor to pointer
+                              cursor: SystemMouseCursors.click, 
                               child: GestureDetector(
                                 onTap: (){
                                   context.read<SideBarBloc>().add(SideBarEvent.setSideBarIndex(index: index));
@@ -59,7 +60,7 @@ class SideBarWidget extends StatelessWidget {
                                       height: Adaptive.sp(23),
                                       width: Adaptive.sp(10),
                                       decoration: BoxDecoration(
-                                        color: isSelected || isHovered ? primaryColor : Colors.white, // Apply hover effect
+                                        color: isSelected || isHovered ? primaryColor : Colors.white, 
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
@@ -69,7 +70,7 @@ class SideBarWidget extends StatelessWidget {
                                         padding: EdgeInsets.symmetric(horizontal: Adaptive.sp(16)),
                                         height: Adaptive.sp(23),
                                         decoration: BoxDecoration(
-                                          color: isSelected || isHovered ? primaryColor : Colors.white, // Apply hover effect
+                                          color: isSelected || isHovered ? primaryColor : Colors.white, 
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         width: double.infinity,
@@ -120,7 +121,7 @@ class SideBarWidget extends StatelessWidget {
                                 child: Center(
                                   child: Row(
                                     children: [
-                                      Text("Logout",
+                                      Text("logout".tr(),
                                           style: GoogleFonts.nunitoSans(
                                               color: primaryColor,
                                               fontWeight: FontWeight.bold

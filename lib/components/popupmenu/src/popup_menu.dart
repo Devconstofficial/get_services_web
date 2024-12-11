@@ -77,7 +77,7 @@ class PopupMenu {
       return build(layoutp, menuLayout!);
     });
 
-    Overlay.of(context)!.insert(_entry!);
+    Overlay.of(context).insert(_entry!);
     _isShow = true;
     onShow?.call();
   }

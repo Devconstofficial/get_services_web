@@ -33,8 +33,8 @@ class MenuItemWidget extends StatefulWidget {
 }
 
 class _MenuItemWidgetState extends State<MenuItemWidget> {
-  var highlightColor = Color(0x55000000);
-  var color = Color(0xff232323);
+  var highlightColor = const Color(0x55000000);
+  var color = const Color(0xff232323);
 
   @override
   void initState() {

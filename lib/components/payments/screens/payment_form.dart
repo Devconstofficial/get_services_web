@@ -1,4 +1,5 @@
 import 'package:data_table_2/data_table_2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -45,12 +46,12 @@ class _PaymentFormState extends State<PaymentForm> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                    Text(
-                    "Payments",
+                    "payment".tr(),
                     style: GoogleFonts.nunitoSans(fontSize: 16.sp, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: Adaptive.sp(14)),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
                         color: softPinkColor,
                         borderRadius: BorderRadius.circular(8),
@@ -61,7 +62,7 @@ class _PaymentFormState extends State<PaymentForm> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         IconButton(onPressed: (){}, icon: SvgPicture.asset(Assets.images.filter)),
-                        SizedBox(width: 8,),
+                        const SizedBox(width: 8,),
                         Container(
                           width: 0.6,
                           color: lightGrayColor,
@@ -69,7 +70,7 @@ class _PaymentFormState extends State<PaymentForm> {
                         ),
                         Padding(
                           padding:  EdgeInsets.symmetric(horizontal: Adaptive.sp(12)),
-                          child: Text("Filter By",
+                          child: Text("filterBy".tr(),
                             style: GoogleFonts.nunitoSans(fontSize: Adaptive.sp(11), fontWeight: FontWeight.bold),),
                         ),
                         Container(
@@ -86,7 +87,7 @@ class _PaymentFormState extends State<PaymentForm> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(state.customStartDate != null?DateFormat("dd MMM yyyy").format(state.customStartDate??DateTime.now()):"Date",
+                                Text(state.customStartDate != null?DateFormat("dd MMM yyyy").format(state.customStartDate??DateTime.now()):"date".tr(),
                                   style: GoogleFonts.nunitoSans(fontSize: Adaptive.sp(11), fontWeight: FontWeight.bold),),
                                 SizedBox(width: Adaptive.sp(8),),
                                 Icon(Icons.keyboard_arrow_down_sharp,
@@ -109,7 +110,7 @@ class _PaymentFormState extends State<PaymentForm> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text("Payment Status",
+                                Text("paymentStatus".tr(),
                                   style: GoogleFonts.nunitoSans(fontSize: Adaptive.sp(11), fontWeight: FontWeight.bold),),
                                 SizedBox(width: Adaptive.sp(8),),
                                 Icon(Icons.keyboard_arrow_down_sharp,
@@ -137,7 +138,7 @@ class _PaymentFormState extends State<PaymentForm> {
                                     color: Colors.red,
                                     size: Adaptive.sp(12),),
                                   SizedBox(width: Adaptive.sp(8),),
-                                  Text("Reset Filter",
+                                  Text("resetFilter".tr(),
                                     style: GoogleFonts.nunitoSans(fontSize: Adaptive.sp(11), fontWeight: FontWeight.bold, color: Colors.red),),
 
                                 ],
@@ -170,7 +171,7 @@ class _PaymentFormState extends State<PaymentForm> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: Adaptive.sp(12)),
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
                 minWidth: 800
             ),
             decoration: BoxDecoration(
@@ -180,13 +181,13 @@ class _PaymentFormState extends State<PaymentForm> {
             ),
             child: Row(
               children: [
-                Expanded(child: Center(child: Text('Payment ID', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,
+                Expanded(child: Center(child: Text('paymentId'.tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,
                   fontSize: 11.5.sp,)))),
-                Expanded(child: Center(child: Text('Client', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Provider', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Amount', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Status', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
-                Expanded(child: Center(child: Text('Actions', style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text('client'.tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text('provider'.tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text('amount'.tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text('status'.tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
+                Expanded(child: Center(child: Text('actions'.tr(), style: GoogleFonts.nunitoSans(fontWeight: FontWeight.bold,fontSize: 11.5.sp)))),
 
               ],
             ),
@@ -194,7 +195,7 @@ class _PaymentFormState extends State<PaymentForm> {
           Expanded(
             child: Theme(
               data: Theme.of(context).copyWith(
-                dividerTheme: DividerThemeData(
+                dividerTheme: const DividerThemeData(
                     color:lightGrayColor,
                     thickness: 0.6
 
@@ -266,7 +267,7 @@ class _PaymentFormState extends State<PaymentForm> {
                         child: Row(
                           children: [
                             Text(
-                              "First Page",
+                              "firstPage".tr(),
                               style: GoogleFonts.nunitoSans(
                                 color: colorDropdownGrey.withOpacity(state.currentTablePageIndex > 0?0.8:0.5),
                                 fontSize: 11.sp,
@@ -305,7 +306,7 @@ class _PaymentFormState extends State<PaymentForm> {
                             ),
                             SizedBox(width: Adaptive.sp(8),),
                             Text(
-                              "Previous Page",
+                              "previousPage".tr(),
                               style: GoogleFonts.nunitoSans(
                                 color: colorDropdownGrey.withOpacity(state.currentTablePageIndex > 0?0.8:0.5),
                                 fontSize: 11.sp,
@@ -319,7 +320,7 @@ class _PaymentFormState extends State<PaymentForm> {
                   ],
                 ),
 
-                Text("Showing ${(state.currentTablePageIndex+1)}-${  ((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?(state.currentTablePageIndex) + paginatorController.rowsPerPage:paginatorController.rowCount} of ${paginatorController.rowCount}",
+                Text("${"showing".tr()} ${(state.currentTablePageIndex+1)}-${  ((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?(state.currentTablePageIndex) + paginatorController.rowsPerPage:paginatorController.rowCount}${"of".tr()}${paginatorController.rowCount}",
                   style:GoogleFonts.nunitoSans(
                     color: colorDropdownGrey.withOpacity(0.8),
                     fontSize: 11.sp,
@@ -342,7 +343,7 @@ class _PaymentFormState extends State<PaymentForm> {
                         child: Row(
                           children: [
                             Text(
-                              "Next Page",
+                              "nextPage".tr(),
                               style: GoogleFonts.nunitoSans(
                                 color: colorDropdownGrey.withOpacity(((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?0.8:0.5),
                                 fontSize: 11.sp,
@@ -374,7 +375,7 @@ class _PaymentFormState extends State<PaymentForm> {
                         child: Row(
                           children: [
                             Text(
-                              "Last Page",
+                              "lastPage".tr(),
                               style: GoogleFonts.nunitoSans(
                                 color: colorDropdownGrey.withOpacity(((state.currentTablePageIndex) + paginatorController.rowsPerPage) < paginatorController.rowCount?0.8:0.5),
                                 fontSize: 11.sp,
@@ -432,7 +433,7 @@ class _PaymentFormState extends State<PaymentForm> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Select Payment Status",
+                            "selectPaymentStatus".tr(),
                             style: GoogleFonts.nunitoSans(fontSize: 12.sp, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(height: Adaptive.sp(12)),
@@ -468,7 +469,7 @@ class _PaymentFormState extends State<PaymentForm> {
                           SizedBox(height: Adaptive.sp(12)),
                           Divider(color: lightGrayColor.withOpacity(0.5),height: 0.6,),
                           SizedBox(height: Adaptive.sp(8)),
-                          Text("*You can choose multiple Order Status",
+                          Text("statusModalTagline".tr(),
 
                             style: GoogleFonts.nunitoSans(
                               color: colorDropdownGrey.withOpacity(0.5),
@@ -490,7 +491,7 @@ class _PaymentFormState extends State<PaymentForm> {
                                     border: Border.all(color: primaryColor)
                                 ),
                                 child: Text(
-                                  "Apply Now",
+                                  "applyNow".tr(),
                                   style: GoogleFonts.nunitoSans(
                                     color: Colors.white,
                                     fontSize: 11.5.sp,
@@ -677,7 +678,7 @@ class _PaymentFormState extends State<PaymentForm> {
                                   SizedBox(height: Adaptive.sp(8)),
                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: Adaptive.sp(10)),
-                                    child: Text("*You can choose multiple Order Status",
+                                    child: Text("dateModalTagline".tr(),
 
                                       style: GoogleFonts.nunitoSans(
                                         color: colorDropdownGrey.withOpacity(0.5),
@@ -700,7 +701,7 @@ class _PaymentFormState extends State<PaymentForm> {
                                             border: Border.all(color: primaryColor)
                                         ),
                                         child: Text(
-                                          "Apply Now",
+                                          "applyNow".tr(),
                                           style: GoogleFonts.nunitoSans(
                                             color: Colors.white,
                                             fontSize: 11.5.sp,
@@ -747,16 +748,16 @@ class PaymentDataSource extends DataTableSource {
       DataCell(Center(child: Text(request.provider,style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w500,color: appBlackColor.withOpacity(0.9),fontSize: 11.sp)))),
       DataCell(Center(child: Text("\$${request.amount.toStringAsFixed(2)}",style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w500,color: appBlackColor.withOpacity(0.9),fontSize: 11.sp)))),
       DataCell(Center(child: Container(
-        padding: EdgeInsets.symmetric(vertical: 3,horizontal: 6),
+        padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 6),
 
           decoration: BoxDecoration(
-            color: request.status.toLowerCase() == "completed"?greenBlueColor.withOpacity(0.2):
-    request.status.toLowerCase() == "pending"?purpleColor.withOpacity(0.2):redColor.withOpacity(0.2),
+            color: request.status== "completed".tr()?greenBlueColor.withOpacity(0.2):
+    request.status == "pending".tr()?purpleColor.withOpacity(0.2):redColor.withOpacity(0.2),
             borderRadius: BorderRadius.circular(4)
           ),
           child: Text(request.status,style: GoogleFonts.nunitoSans(fontWeight: FontWeight.w500,fontSize: 10.sp,
-            color: request.status.toLowerCase() == "completed"?greenBlueColor.withOpacity(1):
-            request.status.toLowerCase() == "pending"?purpleColor.withOpacity(1):redColor,))))),
+            color: request.status== "completed".tr()?greenBlueColor.withOpacity(1):
+            request.status == "pending".tr()?purpleColor.withOpacity(1):redColor,))))),
       DataCell(Center(
         child: Container(
           decoration: BoxDecoration(
@@ -768,9 +769,9 @@ class PaymentDataSource extends DataTableSource {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                  constraints: BoxConstraints(),
+                  constraints: const BoxConstraints(),
                   padding: EdgeInsets.zero,
-                  visualDensity: VisualDensity(horizontal: 2,vertical: -4),
+                  visualDensity: const VisualDensity(horizontal: 2,vertical: -4),
                   icon: SvgPicture.asset(Assets.images.editIcon), onPressed: () {
                 // Add edit action here
               }),
@@ -780,9 +781,9 @@ class PaymentDataSource extends DataTableSource {
                 height: 30,
               ),
               IconButton(
-                  constraints: BoxConstraints(),
+                  constraints: const BoxConstraints(),
                   padding: EdgeInsets.zero,
-                  visualDensity: VisualDensity(horizontal: 2,vertical: -4),
+                  visualDensity: const VisualDensity(horizontal: 2,vertical: -4),
                   icon: SvgPicture.asset(Assets.images.binIcon), onPressed: () {
                 // Add delete action here
               }),

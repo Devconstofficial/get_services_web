@@ -19,6 +19,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/bell.svg
   String get bell => 'assets/images/bell.svg';
 
+  /// File path: assets/images/bin.png
+  AssetGenImage get bin => const AssetGenImage('assets/images/bin.png');
+
   /// File path: assets/images/bin_icon.svg
   String get binIcon => 'assets/images/bin_icon.svg';
 
@@ -71,6 +74,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/lawyer.svg
   String get lawyer => 'assets/images/lawyer.svg';
 
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
   /// File path: assets/images/pet.svg
   String get pet => 'assets/images/pet.svg';
 
@@ -80,7 +86,7 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/sidebar_logo.png
   AssetGenImage get sidebarLogo =>
-      const AssetGenImage('assets/images/logo.png');
+      const AssetGenImage('assets/images/sidebar_logo.png');
 
   /// File path: assets/images/uk_flag.png
   AssetGenImage get ukFlag => const AssetGenImage('assets/images/uk_flag.png');
@@ -93,6 +99,7 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
         addImage,
         bell,
+        bin,
         binIcon,
         chartUp,
         check,
@@ -109,6 +116,7 @@ class $AssetsImagesGen {
         homeRepairs,
         illegalFlag,
         lawyer,
+        logo,
         pet,
         saudiFlag,
         sidebarLogo,
@@ -117,10 +125,27 @@ class $AssetsImagesGen {
       ];
 }
 
+class $AssetsTranslationGen {
+  const $AssetsTranslationGen();
+
+  /// File path: assets/translation/ar-SA.json
+  String get arSA => 'assets/translation/ar-SA.json';
+
+  /// File path: assets/translation/en-US.json
+  String get enUS => 'assets/translation/en-US.json';
+
+  /// File path: assets/translation/he-IL.json
+  String get heIL => 'assets/translation/he-IL.json';
+
+  /// List of all assets
+  List<String> get values => [arSA, enUS, heIL];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsTranslationGen translation = $AssetsTranslationGen();
 }
 
 class AssetGenImage {

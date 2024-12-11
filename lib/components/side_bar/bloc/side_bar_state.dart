@@ -20,13 +20,13 @@ class SideBarState with _$SideBarState {
       notificationCount: 6,
       languageImages: [Assets.images.ukFlag.path,Assets.images.illegalFlag.path,Assets.images.saudiFlag.path],
       languages: [
-        CategoriesModel(name: "Select Language",isSelected: false),
-        CategoriesModel(name: "English",isSelected: true),
-        CategoriesModel(name: "Hebrew",isSelected: false),
-        CategoriesModel(name: "Arabic",isSelected: false),
+        CategoriesModel(name: "selectLanguage".tr(),isSelected: false),
+        CategoriesModel(name: "english".tr(),isSelected: true),
+        CategoriesModel(name: "hebrew".tr(),isSelected: false),
+        CategoriesModel(name: "arabic".tr(),isSelected: false),
       ],
-    items: ["Dashboard","Service Provides","Categories","Payment"],
-      pages: [DashboardPage(),ProviderPage(),CategoriesPage(),PaymentPage()]
+    items: ["dashboard".tr(),"serviceProviders".tr(),"categories".tr(),"payment".tr()],
+      pages: [const DashboardPage(),const ProviderPage(),const CategoriesPage(),const PaymentPage()]
   );
 }
 

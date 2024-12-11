@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_services/common_model/categories_model.dart';
 import 'package:get_services/components/providers/screens/provider_page.dart';
+import 'package:get_services/generated/locale_keys.g.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../categories/screens/categories_page.dart';

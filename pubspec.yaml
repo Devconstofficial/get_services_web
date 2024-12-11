@@ -50,6 +50,7 @@ dependencies:
   info_popup: ^4.3.1
   flutter_svg: ^1.1.5
   provider: ^6.1.2
+  easy_localization: ^3.0.7
 
 
 dev_dependencies:
@@ -81,6 +82,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/translation/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

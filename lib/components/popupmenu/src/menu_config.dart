@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'popup_menu.dart';
 
 class MenuConfig {
   final double itemWidth;

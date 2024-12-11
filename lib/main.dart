@@ -1,20 +1,27 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_services/components/providers/bloc/provider_bloc.dart';
 import 'package:get_services/components/side_bar/bloc/side_bar_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_services/gen/color_constant.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
-import 'common_model/categories_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'components/home_page/screens/home_page.dart';
-import 'components/side_bar/screens/side_bar.dart';
-import 'gen/assets.gen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [
+        Locale("en", "US"),
+        Locale("ar", "SA"),
+        Locale("he", "IL"),
+      ],
+      saveLocale: true,
+      path: 'assets/translation',
+      fallbackLocale: const Locale("ar", "SA"),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -25,10 +32,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => SideBarBloc()),
+        BlocProvider(create: (_) => ProvidersBloc()),
       ],
       child: ResponsiveSizer(
-          builder: (context, orientation, screenType) {
-            return MaterialApp(
+        builder: (context, orientation, screenType) {
+          return MaterialApp(
             title: 'Get Services',
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -36,11 +44,12 @@ class MyApp extends StatelessWidget {
             ),
             debugShowCheckedModeBanner: false,
             home: const MyHomePage(),
+            locale: context.locale, 
+            supportedLocales: context.supportedLocales,
+            localizationsDelegates: context.localizationDelegates,
           );
-        }
+        },
       ),
     );
   }
 }
-
-

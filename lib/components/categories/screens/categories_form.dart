@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                    Text(
-                    "Categories",
+                    "categories".tr(),
                     style: GoogleFonts.nunitoSans(fontSize: 16.sp, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: Adaptive.sp(12)),
@@ -177,7 +178,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                       ),
                                       height: Adaptive.sp(22),
                                       child: Center(
-                                        child: Text("Add Category",
+                                        child: Text("addCategory".tr(),
                                           style: GoogleFonts.nunitoSans(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w600,
@@ -200,7 +201,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                       ),
                                       height: Adaptive.sp(22),
                                       child: Center(
-                                        child: Text("Add Subcategory",
+                                        child: Text("addSubCategory".tr(),
                                           style: GoogleFonts.nunitoSans(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w600,
@@ -235,7 +236,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                             ),
                             height: Adaptive.sp(22),
                             child: Center(
-                              child: Text("Remove Category",
+                              child: Text("removeCategory".tr(),
                                 style: GoogleFonts.nunitoSans(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
@@ -257,7 +258,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                             ),
                             height: Adaptive.sp(22),
                             child: Center(
-                              child: Text("Remove Subcategory",
+                              child: Text("removeSubcategory".tr(),
                                 style: GoogleFonts.nunitoSans(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
@@ -275,8 +276,8 @@ class _CategoriesFormState extends State<CategoriesForm> {
                       children: [
                         InkWell(
                           onTap: (){
-                            categoriesBloc.add(CategoriesEvent.changeDeleteModeCategory(value: false));
-                            categoriesBloc.add(CategoriesEvent.changeDeleteModeSubCategory(value: false));
+                            categoriesBloc.add(const CategoriesEvent.changeDeleteModeCategory(value: false));
+                            categoriesBloc.add(const CategoriesEvent.changeDeleteModeSubCategory(value: false));
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: Adaptive.sp(6),horizontal: Adaptive.sp(24)),
@@ -286,7 +287,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                             ),
                             height: Adaptive.sp(22),
                             child: Center(
-                              child: Text("Cancel",
+                              child: Text("cancel".tr(),
                                 style: GoogleFonts.nunitoSans(
                                     color: primaryColor,
                                     fontWeight: FontWeight.w600,
@@ -298,8 +299,8 @@ class _CategoriesFormState extends State<CategoriesForm> {
                         SizedBox(width: Adaptive.sp(12)),
                         InkWell(
                           onTap: (){
-                            categoriesBloc.add(CategoriesEvent.changeDeleteModeCategory(value: false));
-                            categoriesBloc.add(CategoriesEvent.changeDeleteModeSubCategory(value: false));
+                            categoriesBloc.add(const CategoriesEvent.changeDeleteModeCategory(value: false));
+                            categoriesBloc.add(const CategoriesEvent.changeDeleteModeSubCategory(value: false));
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: Adaptive.sp(6),horizontal: Adaptive.sp(24)),
@@ -309,7 +310,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                             ),
                             height: Adaptive.sp(22),
                             child: Center(
-                              child: Text("Apply Now",
+                              child: Text("applyNow".tr(),
                                 style: GoogleFonts.nunitoSans(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
@@ -354,9 +355,9 @@ class _CategoriesFormState extends State<CategoriesForm> {
                   border: Border.all(color: lightGrayColor)
               ),
               child: IconButton(
-                  constraints: BoxConstraints(),
+                  constraints: const BoxConstraints(),
                   padding: EdgeInsets.zero,
-                  visualDensity: VisualDensity(horizontal: 2,vertical: 2),
+                  visualDensity: const VisualDensity(horizontal: 2,vertical: 2),
                   icon: SvgPicture.asset(Assets.images.binIcon), onPressed: () {
                 // Add delete action here
               }),
@@ -381,9 +382,9 @@ class _CategoriesFormState extends State<CategoriesForm> {
                       border: Border.all(color: lightGrayColor)
                   ),
                   child: IconButton(
-                      constraints: BoxConstraints(),
+                      constraints: const BoxConstraints(),
                       padding: EdgeInsets.zero,
-                      visualDensity: VisualDensity(horizontal: 2,vertical: 2),
+                      visualDensity: const VisualDensity(horizontal: 2,vertical: 2),
                       icon: SvgPicture.asset(Assets.images.binIcon), onPressed: () {
                     // Add delete action here
                   }),
@@ -440,12 +441,12 @@ class _CategoriesFormState extends State<CategoriesForm> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Add Category",
+                          "addCategory".tr(),
                           style: GoogleFonts.nunitoSans(fontSize: 12.5.sp, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: Adaptive.sp(8)),
                         Text(
-                          "Attach Image",
+                          "attachImage".tr(),
                           style: GoogleFonts.nunitoSans(fontSize: 11.sp,color: appBlackColor,fontWeight: FontWeight.w500),
                         ),
                         SizedBox(height: Adaptive.sp(8)),
@@ -483,7 +484,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                               children: [
                                 SizedBox(height: Adaptive.sp(12)),
                                 Text(
-                                  "+ Attach Image",
+                                  "attachImage1".tr(),
                                   style: GoogleFonts.nunitoSans(fontSize: 11.sp,color: borderColor,fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: Adaptive.sp(8)),
@@ -536,9 +537,9 @@ class _CategoriesFormState extends State<CategoriesForm> {
                             filled: true,
                             isCollapsed: true,
                             isDense: true,
-                            constraints: BoxConstraints(),
-                            prefixIconConstraints: BoxConstraints(),
-                            hintText: "Enter category name",
+                            constraints: const BoxConstraints(),
+                            prefixIconConstraints: const BoxConstraints(),
+                            hintText: "enterCategoryName".tr(),
                             hintStyle: GoogleFonts.nunitoSans(
                                 color: borderColor,
                                 fontSize: constraint.maxWidth >= 824?12.sp:
@@ -551,19 +552,19 @@ class _CategoriesFormState extends State<CategoriesForm> {
                               horizontal: Adaptive.sp(12),
                             ),
                             border: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: borderColor,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: borderColor,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: borderColor,
                               ),
                               borderRadius: BorderRadius.circular(8),
@@ -586,7 +587,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                   border: Border.all(color: primaryColor)
                               ),
                               child: Text(
-                                "Add Now",
+                                "addNow".tr(),
                                 style: GoogleFonts.nunitoSans(
                                   color: Colors.white,
                                   fontSize: 11.5.sp,
@@ -606,7 +607,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
         });
   }
   Future<void> _addSubCategoryForm(BoxConstraints constraint) async {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     List<String> subCategories = [""];
 
     return showDialog(
@@ -639,14 +640,14 @@ class _CategoriesFormState extends State<CategoriesForm> {
                             ),
 
                             child: Form(
-                              key: _formKey,
+                              key: formKey,
                               child: SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Add Subcategory",
+                                      "addSubCategory".tr(),
                                       style: GoogleFonts.nunitoSans(fontSize: 12.5.sp, fontWeight: FontWeight.bold),
                                     ),
 
@@ -655,14 +656,14 @@ class _CategoriesFormState extends State<CategoriesForm> {
 
                                       validator: (value){
                                         if (state.categories.where((e) => e.isUpdating).isEmpty) {
-                                          return 'Please select a category';
+                                          return "errorSubcategory".tr();
                                         }
                                         return null;
                                       },
                                       customButton: Row(
                                         children: [
                                           Text(
-                                            state.categories.where((e) => e.isUpdating).isNotEmpty?state.categories.firstWhere((e) => e.isUpdating).category:"Select Category",
+                                            state.categories.where((e) => e.isUpdating).isNotEmpty?state.categories.firstWhere((e) => e.isUpdating).category:"selectCategory".tr(),
                                             style: GoogleFonts.nunitoSans(
                                               color: state.categories.where((e) => e.isUpdating).isNotEmpty?primaryColor:borderColor,
                                               fontSize: constraint.maxWidth >= 824?12.sp:
@@ -670,7 +671,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Icon(
                                             Icons.keyboard_arrow_down_sharp,
                                             color: primaryColor,
@@ -708,8 +709,8 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                         filled: true,
                                         isCollapsed: true,
                                         isDense: true,
-                                        constraints: BoxConstraints(),
-                                        prefixIconConstraints: BoxConstraints(),
+                                        constraints: const BoxConstraints(),
+                                        prefixIconConstraints: const BoxConstraints(),
                                         hintStyle: GoogleFonts.nunitoSans(
                                             color: borderColor,
                                             fontSize: constraint.maxWidth >= 824?12.sp:
@@ -722,19 +723,19 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                           horizontal: Adaptive.sp(12),
                                         ),
                                         border: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: borderColor,
                                           ),
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: borderColor,
                                           ),
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: borderColor,
                                           ),
                                           borderRadius: BorderRadius.circular(8),
@@ -752,7 +753,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                                 child: TextFormField(
                                                   validator: (value){
                                                     if (value == null || value.isEmpty) {
-                                                      return 'Please enter subcategory name';
+                                                      return "errorSubcategory".tr();
                                                     }
                                                     return null;
                                                   },
@@ -768,9 +769,9 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                                     filled: true,
                                                     isCollapsed: true,
                                                     isDense: true,
-                                                    constraints: BoxConstraints(),
-                                                    prefixIconConstraints: BoxConstraints(),
-                                                    hintText: "Enter category name",
+                                                    constraints: const BoxConstraints(),
+                                                    prefixIconConstraints: const BoxConstraints(),
+                                                    hintText: "enterCategoryName".tr(),
                                                     hintStyle: GoogleFonts.nunitoSans(
                                                         color: borderColor,
                                                         fontSize: constraint.maxWidth >= 824?12.sp:
@@ -783,19 +784,19 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                                       horizontal: Adaptive.sp(12),
                                                     ),
                                                     border: OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color: borderColor,
                                                       ),
                                                       borderRadius: BorderRadius.circular(8),
                                                     ),
                                                     enabledBorder: OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color: borderColor,
                                                       ),
                                                       borderRadius: BorderRadius.circular(8),
                                                     ),
                                                     focusedBorder: OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color: borderColor,
                                                       ),
                                                       borderRadius: BorderRadius.circular(8),
@@ -805,10 +806,10 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                               ),
                                               if (index != 0)...[
                                                 IconButton(
-                                                  constraints: BoxConstraints(),
+                                                  constraints: const BoxConstraints(),
                                                   padding: EdgeInsets.zero,
-                                                  visualDensity: VisualDensity(horizontal: 2,vertical: -4),
-                                                  icon: Icon(Icons.remove_circle_outline, color: Colors.red),
+                                                  visualDensity: const VisualDensity(horizontal: 2,vertical: -4),
+                                                  icon: const Icon(Icons.remove_circle_outline, color: Colors.red),
                                                   onPressed: () {
                                                     addState(() {
                                                       subCategories.removeAt(index); // Remove the subcategory at this index
@@ -839,7 +840,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                               borderRadius: BorderRadius.circular(10),
                                               border: Border.all(color: primaryColor)
                                           ),
-                                          child: Icon(Icons.add,color: Colors.white,),
+                                          child: const Icon(Icons.add,color: Colors.white,),
                                         ),
                                       ),
                                     ),
@@ -847,7 +848,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                     Center(
                                       child: InkWell(
                                         onTap: (){
-                                          if (_formKey.currentState!.validate()) {
+                                          if (formKey.currentState!.validate()) {
                                             Navigator.pop(context);
                                           }
                                         },
@@ -860,7 +861,7 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                               border: Border.all(color: primaryColor)
                                           ),
                                           child: Text(
-                                            "Add Now",
+                                            "addNow".tr(),
                                             style: GoogleFonts.nunitoSans(
                                               color: Colors.white,
                                               fontSize: 11.5.sp,
