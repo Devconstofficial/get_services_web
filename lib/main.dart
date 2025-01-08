@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_services/components/forgot_password/bloc/forgot_password_bloc.dart';
+import 'package:get_services/components/login/Auth_screen.dart';
+import 'package:get_services/components/login/bloc/login_bloc.dart';
+
 import 'package:get_services/components/providers/bloc/provider_bloc.dart';
 import 'package:get_services/components/side_bar/bloc/side_bar_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'components/home_page/screens/home_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); 
+  WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
@@ -33,18 +37,20 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => SideBarBloc()),
         BlocProvider(create: (_) => ProvidersBloc()),
+        BlocProvider(create: (_) => LoginBloc()),
+        BlocProvider(create: (_) => ForgotPasswordBloc()),
       ],
       child: ResponsiveSizer(
         builder: (context, orientation, screenType) {
-          return MaterialApp(
+          return GetMaterialApp(
             title: 'Get Services',
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
             debugShowCheckedModeBanner: false,
-            home: const MyHomePage(),
-            locale: context.locale, 
+            home: const AuthScreen(),
+            locale: context.locale,
             supportedLocales: context.supportedLocales,
             localizationsDelegates: context.localizationDelegates,
           );
