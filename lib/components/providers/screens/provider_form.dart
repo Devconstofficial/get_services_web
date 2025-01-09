@@ -192,14 +192,30 @@ class _ProviderFormState extends State<ProviderForm> {
                     ),
                   ),
                   SizedBox(height: Adaptive.sp(14)),
-                  Expanded(
-                      child: state.isLoading
-                          ? const Center(
-                              child: CircularProgressIndicator(
-                                color: primaryColor,
-                              ),
-                            )
-                          : _buildProviderTable(state.providerRequests, state)),
+                  BlocBuilder<ProvidersBloc, ProvidersState>(
+                    builder: (context, state) {
+                      return Expanded(
+                          child: state.isLoading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: primaryColor,
+                                  ),
+                                )
+                              : state.filteredProviderRequests.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        "No providers",
+                                        style: GoogleFonts.nunitoSans(
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    )
+                                  : _buildProviderTable(
+                                      state.filteredProviderRequests, state));
+                    },
+                  ),
                 ],
               ),
             );
@@ -242,12 +258,6 @@ class _ProviderFormState extends State<ProviderForm> {
                 Expanded(
                     child: Center(
                         child: Text('location'.tr(),
-                            style: GoogleFonts.nunitoSans(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 11.5.sp)))),
-                Expanded(
-                    child: Center(
-                        child: Text('category'.tr(),
                             style: GoogleFonts.nunitoSans(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11.5.sp)))),
@@ -297,7 +307,6 @@ class _ProviderFormState extends State<ProviderForm> {
                 autoRowsToHeight: true,
                 hidePaginator: true,
                 columns: const [
-                  DataColumn(label: Text("")),
                   DataColumn(label: Text("")),
                   DataColumn(label: Text("")),
                   DataColumn(label: Text("")),
@@ -604,6 +613,9 @@ class _ProviderFormState extends State<ProviderForm> {
                         Center(
                           child: InkWell(
                             onTap: () {
+                              context
+                                  .read<ProvidersBloc>()
+                                  .add(const ProvidersEvent.applyFilter());
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -788,7 +800,7 @@ class _ProviderFormState extends State<ProviderForm> {
                                   onDaySelected: (date, events) {
                                     providersBloc.add(
                                         ProvidersEvent.changeFilterDate(
-                                            startDate: date, endDate: date));
+                                            startDate: date));
                                   },
                                   daysOfWeekStyle: DaysOfWeekStyle(
                                       weekdayStyle: GoogleFonts.nunitoSans(
@@ -825,6 +837,9 @@ class _ProviderFormState extends State<ProviderForm> {
                               Center(
                                 child: InkWell(
                                   onTap: () {
+                                    providersBloc.add(
+                                        const ProvidersEvent.applyDateFilter());
+
                                     Navigator.pop(context);
                                   },
                                   child: Container(
@@ -990,7 +1005,7 @@ class ProviderDataSource extends DataTableSource {
                         isExpanded: true,
                       ),
                       SizedBox(height: Adaptive.sp(20)),
-                      state.isLoading
+                      state.isLoadingUpdate
                           ? const Center(
                               child: CircularProgressIndicator(
                                 color: primaryColor,
@@ -1126,7 +1141,7 @@ class ProviderDataSource extends DataTableSource {
                     SizedBox(height: Adaptive.sp(15)),
                     Divider(),
                     SizedBox(height: Adaptive.sp(15)),
-                    state.isLoading
+                    state.isLoadingDelete
                         ? const Center(
                             child: CircularProgressIndicator(
                               color: primaryColor,
@@ -1173,8 +1188,6 @@ class ProviderDataSource extends DataTableSource {
   @override
   DataRow getRow(int index) {
     final request = providerRequests[index];
-    final servicesList =
-        request.services.map((service) => service.service).join(', ');
 
     final locationsList =
         request.mapLocations.map((location) => location.id).join(', ');
@@ -1193,12 +1206,6 @@ class ProviderDataSource extends DataTableSource {
                   fontSize: 11.sp)))),
       DataCell(Center(
           child: Text(locationsList,
-              style: GoogleFonts.nunitoSans(
-                  fontWeight: FontWeight.w500,
-                  color: appBlackColor.withOpacity(0.9),
-                  fontSize: 11.sp)))),
-      DataCell(Center(
-          child: Text(servicesList,
               style: GoogleFonts.nunitoSans(
                   fontWeight: FontWeight.w500,
                   color: appBlackColor.withOpacity(0.9),

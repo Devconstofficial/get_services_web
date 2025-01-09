@@ -535,10 +535,10 @@ class __$$UpdateCountryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? country = freezed,
+    Object? country = null,
   }) {
     return _then(_$UpdateCountryImpl(
-      freezed == country
+      null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as PhoneCountryData,
@@ -564,12 +564,11 @@ class _$UpdateCountryImpl implements _UpdateCountry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateCountryImpl &&
-            const DeepCollectionEquality().equals(other.country, country));
+            (identical(other.country, country) || other.country == country));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(country));
+  int get hashCode => Object.hash(runtimeType, country);
 
   @JsonKey(ignore: true)
   @override
@@ -887,7 +886,7 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
     Object? phoneNumberController = null,
     Object? passwordController = null,
     Object? confirmPasswordController = null,
-    Object? country = freezed,
+    Object? country = null,
     Object? phoneNumber = null,
   }) {
     return _then(_value.copyWith(
@@ -915,7 +914,7 @@ class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
           ? _value.confirmPasswordController
           : confirmPasswordController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
-      country: freezed == country
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as PhoneCountryData,
@@ -963,7 +962,7 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
     Object? phoneNumberController = null,
     Object? passwordController = null,
     Object? confirmPasswordController = null,
-    Object? country = freezed,
+    Object? country = null,
     Object? phoneNumber = null,
   }) {
     return _then(_$ForgotPasswordStateImpl(
@@ -991,7 +990,7 @@ class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
           ? _value.confirmPasswordController
           : confirmPasswordController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
-      country: freezed == country
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as PhoneCountryData,
@@ -1057,7 +1056,7 @@ class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
             (identical(other.confirmPasswordController,
                     confirmPasswordController) ||
                 other.confirmPasswordController == confirmPasswordController) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber));
   }
@@ -1071,7 +1070,7 @@ class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
       phoneNumberController,
       passwordController,
       confirmPasswordController,
-      const DeepCollectionEquality().hash(country),
+      country,
       phoneNumber);
 
   @JsonKey(ignore: true)

@@ -110,4 +110,101 @@ class ApiServices {
       return 'Error: $e';
     }
   }
+
+  static Future<Map<String, dynamic>> viewAllCategories() async {
+    final token = await prefs.getUserToken();
+    try {
+      Response response = await HttpServiceManager.get(
+          endPoint: Url.viewAllCategories,
+          headers: {
+            'Authorization': 'Bearer $token',
+          });
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>> viewAllServices() async {
+    final token = await prefs.getUserToken();
+    try {
+      Response response =
+          await HttpServiceManager.get(endPoint: Url.viewAllService, headers: {
+        'Authorization': 'Bearer $token',
+      });
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>> addCategory(
+      {required Map<String, dynamic> body}) async {
+    final token = await prefs.getUserToken();
+    try {
+      Response response = await HttpServiceManager.post(
+          endPoint: Url.addCategory,
+          body: body,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $token',
+          });
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>> addService(
+      {required Map<String, dynamic> body}) async {
+    final token = await prefs.getUserToken();
+    try {
+      Response response = await HttpServiceManager.post(
+          endPoint: Url.addService,
+          body: body,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $token',
+          });
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>> deleteService(
+      {required String id}) async {
+    final token = await prefs.getUserToken();
+    try {
+      Response response = await HttpServiceManager.delete(
+          endPoint: "${Url.deleteService}/$id",
+          headers: {
+            'Authorization': 'Bearer $token',
+          });
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<Map<String, dynamic>> deleteCategory(
+      {required String id}) async {
+    final token = await prefs.getUserToken();
+    try {
+      Response response = await HttpServiceManager.delete(
+          endPoint: "${Url.deleteCategory}/$id",
+          headers: {
+            'Authorization': 'Bearer $token',
+          });
+
+      return jsonDecode(response.body);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

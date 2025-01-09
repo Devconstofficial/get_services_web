@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_services/services/urls.dart';
 import 'package:http/http.dart' as http;
@@ -48,35 +47,25 @@ class HttpServiceManager {
     return http.get(uri, headers: headers ?? await _headers);
   }
 
-  static Future<String> uploadUserProfileImage(File imageFile) async {
+  static Future<String> uploadCategoryImage(dynamic imageBytes) async {
     try {
       String filePath =
-          'getS/profile_images/${DateTime.now().millisecondsSinceEpoch}_profile.png';
+          'getS/category_images/${DateTime.now().millisecondsSinceEpoch}_category.png';
 
-      UploadTask uploadTask = _storage.ref(filePath).putFile(imageFile);
+      UploadTask uploadTask;
+
+      uploadTask = _storage.ref(filePath).putData(imageBytes);
+
+      // Wait for the upload to complete
       TaskSnapshot snapshot = await uploadTask;
 
+      // Get the download URL after the upload is complete
       String downloadUrl = await snapshot.ref.getDownloadURL();
 
       return downloadUrl;
     } catch (e) {
-      throw 'Failed to upload profile image: $e';
-    }
-  }
-
-  static Future<String> uploadReqImage(File imageFile) async {
-    try {
-      String filePath =
-          'getS/request_images/${DateTime.now().millisecondsSinceEpoch}_request.png';
-
-      UploadTask uploadTask = _storage.ref(filePath).putFile(imageFile);
-      TaskSnapshot snapshot = await uploadTask;
-
-      String downloadUrl = await snapshot.ref.getDownloadURL();
-
-      return downloadUrl;
-    } catch (e) {
-      throw 'Failed to upload profile image: $e';
+      print('${e.toString()}');
+      throw 'Failed to upload category image: $e';
     }
   }
 

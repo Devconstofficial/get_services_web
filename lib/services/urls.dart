@@ -6,4 +6,11 @@ class Url {
   static const String deleteProvider = 'admin/business';
   static const String updateProvider = 'admin/updatebusiness';
   static const String updateUser = 'admin/user/updateUser';
+  static const String addService = 'admin/service/addService';
+  static const String addCategory = 'admin/service/addServiceCategory';
+  static const String deleteCategory = 'admin/service/deleteServiceCategory';
+  static const String deleteService = 'admin/service/deleteService';
+  static const String viewAllCategories =
+      'admin/service/viewAllServiceCategory';
+  static const String viewAllService = 'admin/service/viewAllService';
 }

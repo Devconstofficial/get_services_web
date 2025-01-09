@@ -8,9 +8,10 @@ class ProvidersEvent with _$ProvidersEvent {
       {required int index}) = _ChangeCurrentTablePageIndex;
   const factory ProvidersEvent.setProviderStatus(
       {required int index, required bool value}) = _SetProviderStatus;
+  const factory ProvidersEvent.applyFilter() = _ApplyFilter;
+  const factory ProvidersEvent.applyDateFilter() = _ApplyDateFilter;
   const factory ProvidersEvent.changeFilterDate(
-      {required DateTime? startDate,
-      required DateTime? endDate}) = _ChanegFilterDate;
+      {required DateTime? startDate}) = _ChanegFilterDate;
   const factory ProvidersEvent.fetchProviderRequests() = _FetchProviderRequests;
   const factory ProvidersEvent.updateProvider(
       {required Map<String, dynamic> body,

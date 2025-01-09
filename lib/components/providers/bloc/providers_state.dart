@@ -8,7 +8,10 @@ class ProvidersState with _$ProvidersState {
     required int currentTablePageIndex,
     required List<CategoriesModel> providerStatus,
     required List<ProviderRequestModel> providerRequests,
+    required List<ProviderRequestModel> filteredProviderRequests,
     required bool isLoading,
+    required bool isLoadingDelete,
+    required bool isLoadingUpdate,
   }) = _ProvidersState;
 
   factory ProvidersState.initial() => ProvidersState(
@@ -22,6 +25,9 @@ class ProvidersState with _$ProvidersState {
           CategoriesModel(name: "onHold".tr(), isSelected: false),
         ],
         providerRequests: [],
+        filteredProviderRequests: [],
         isLoading: false,
+        isLoadingDelete: false,
+        isLoadingUpdate: false,
       );
 }

@@ -20,29 +20,89 @@ class ProvidersBloc extends Bloc<ProvidersEvent, ProvidersState> {
           emit(state.copyWith(currentTablePageIndex: _.index));
         },
         changeFilterDate: (_) async {
+          final selectedDate = _.startDate;
+
           emit(state.copyWith(
-              customStartDate: _.startDate, customEndDate: _.endDate));
+            customStartDate: selectedDate,
+          ));
         },
         setProviderStatus: (_) async {
-          List<CategoriesModel> categoriesModel =
-              List.from(state.providerStatus);
-          CategoriesModel updatedData =
-              categoriesModel[_.index].copyWith(isSelected: _.value);
-          categoriesModel[_.index] = updatedData;
-          emit(state.copyWith(providerStatus: categoriesModel));
+          final updatedCategories =
+              List<CategoriesModel>.from(state.providerStatus);
+          final updatedCategory =
+              updatedCategories[_.index].copyWith(isSelected: _.value);
+          updatedCategories[_.index] = updatedCategory;
+
+          emit(state.copyWith(
+            providerStatus: updatedCategories,
+          ));
+        },
+        applyFilter: (_) {
+          final updatedCategories =
+              List<CategoriesModel>.from(state.providerStatus);
+
+          final activeStatuses = updatedCategories
+              .where((category) => category.isSelected)
+              .map((category) => category.name)
+              .toList();
+
+          List<ProviderRequestModel> filteredRequests = [];
+
+          if (activeStatuses.isNotEmpty) {
+            for (var status in activeStatuses) {
+              if (status == "active".tr()) {
+                // Fetch providers with "verified" status for "active"
+                filteredRequests.addAll(state.providerRequests.where((request) {
+                  return request.status == "verified";
+                }));
+              } else if (status == "onHold".tr()) {
+                // Fetch providers with "pending" status for "on Hold"
+                filteredRequests.addAll(state.providerRequests.where((request) {
+                  return request.status == "pending";
+                }));
+              } else {
+                // Handle other statuses if needed
+                filteredRequests.addAll(state.providerRequests.where((request) {
+                  return request.status == status;
+                }));
+              }
+            }
+          } else {
+            // No filters applied, show all requests
+            filteredRequests =
+                List<ProviderRequestModel>.from(state.providerRequests);
+          }
+
+          emit(state.copyWith(
+            providerStatus: updatedCategories,
+            filteredProviderRequests: filteredRequests,
+          ));
+        },
+        applyDateFilter: (_) {
+          final selectedDate = state.customStartDate;
+          List<ProviderRequestModel> filteredRequests = state.providerRequests;
+          if (selectedDate != null) {
+            filteredRequests = state.providerRequests.where((request) {
+              final createdAt = request.createdAt;
+              return createdAt.year == selectedDate.year &&
+                  createdAt.month == selectedDate.month &&
+                  createdAt.day == selectedDate.day;
+            }).toList();
+          }
+
+          emit(state.copyWith(filteredProviderRequests: filteredRequests));
         },
         resetFilter: (_) async {
-          List<CategoriesModel> categoriesModel =
-              List.from(state.providerStatus);
-          for (int i = 0; i < categoriesModel.length; i++) {
-            CategoriesModel updatedData =
-                categoriesModel[i].copyWith(isSelected: false);
-            categoriesModel[i] = updatedData;
-          }
+          final resetCategories = state.providerStatus
+              .map((category) => category.copyWith(isSelected: false))
+              .toList();
+
           emit(state.copyWith(
-              providerStatus: categoriesModel,
-              customEndDate: null,
-              customStartDate: null));
+            providerStatus: resetCategories,
+            customStartDate: null,
+            customEndDate: null,
+            filteredProviderRequests: state.providerRequests,
+          ));
         },
         fetchProviderRequests: (_) async {
           emit(state.copyWith(isLoading: true));
@@ -73,6 +133,7 @@ class ProvidersBloc extends Bloc<ProvidersEvent, ProvidersState> {
               }
               emit(state.copyWith(
                 providerRequests: providerRequests,
+                filteredProviderRequests: providerRequests,
                 isLoading: false,
               ));
             } else {
@@ -86,46 +147,50 @@ class ProvidersBloc extends Bloc<ProvidersEvent, ProvidersState> {
           }
         },
         updateProvider: (_) async {
-          emit(state.copyWith(isLoading: true));
+          emit(state.copyWith(isLoadingUpdate: true));
           try {
             final response = await ApiServices.updateProvider(
               body: _.body,
               id: _.id,
             );
-            log('Update Response: $response');
+
             if (response['success'] == true) {
               add(const ProvidersEvent.fetchProviderRequests());
               Navigator.pop(_.context);
               showCustomSnackbar('Success', 'Provider updated successfully',
                   backgroundColor: Colors.green);
             } else {
+              emit(state.copyWith(isLoadingUpdate: false));
               showCustomSnackbar(
                   'Error', 'Update failed: ${response['message']}');
             }
           } catch (e) {
+            emit(state.copyWith(isLoadingUpdate: false));
             showCustomSnackbar('Error', 'An error occurred: ${e.toString()}');
           } finally {
-            emit(state.copyWith(isLoading: false));
+            emit(state.copyWith(isLoadingUpdate: false));
           }
         },
         deleteProvider: (_) async {
-          emit(state.copyWith(isLoading: true));
+          emit(state.copyWith(isLoadingDelete: true));
           try {
             final response = await ApiServices.deleteProvider(id: _.id);
-            log('Delete Response: $response');
+
             if (response['success'] == true) {
               add(const ProvidersEvent.fetchProviderRequests());
               Navigator.pop(_.context);
               showCustomSnackbar('Success', 'Provider deleted successfully',
                   backgroundColor: Colors.green);
             } else {
+              emit(state.copyWith(isLoadingDelete: false));
               showCustomSnackbar(
                   'Error', 'Delete failed: ${response['message']}');
             }
           } catch (e) {
+            emit(state.copyWith(isLoadingDelete: false));
             showCustomSnackbar('Error', 'An error occurred: ${e.toString()}');
           } finally {
-            emit(state.copyWith(isLoading: false));
+            emit(state.copyWith(isLoadingDelete: false));
           }
         },
       );
