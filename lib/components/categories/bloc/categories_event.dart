@@ -24,4 +24,7 @@ class CategoriesEvent with _$CategoriesEvent {
     required String categoryId,
     required String serviceName,
   }) = _AddService;
+  const factory CategoriesEvent.selectImage({
+    required Uint8List? imageBytes,
+  }) = _SelectImage;
 }

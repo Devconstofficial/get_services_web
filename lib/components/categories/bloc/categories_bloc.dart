@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -116,14 +117,13 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
                   .toList();
 
               emit(state.copyWith(
-                categories: updatedCategories,
-                deletingCategoryId: null,
-              ));
+                  categories: updatedCategories,
+                  deletingCategoryId: null,
+                  isDeletionModeCategory: false));
               showCustomSnackbar('Success', 'Category deleted successfully.',
                   backgroundColor: Colors.green);
             } else {
-              emit(state.copyWith(
-                  deletingCategoryId: null, isDeletionModeCategory: false));
+              emit(state.copyWith(deletingCategoryId: null));
               showCustomSnackbar(
                 'Error',
                 'Failed to delete category: ${response['message'] ?? 'Unknown error'}',
@@ -151,13 +151,13 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
               }).toList();
 
               emit(state.copyWith(
-                  categories: updatedCategories, deletingSubCategoryId: null));
+                  categories: updatedCategories,
+                  deletingSubCategoryId: null,
+                  isDeletionModeSubcategory: false));
               showCustomSnackbar('Success', 'Subcategory deleted successfully.',
                   backgroundColor: Colors.green);
             } else {
-              emit(state.copyWith(
-                  deletingSubCategoryId: null,
-                  isDeletionModeSubcategory: false));
+              emit(state.copyWith(deletingSubCategoryId: null));
               showCustomSnackbar(
                 'Error',
                 'Failed to delete subcategory: ${response['message'] ?? 'Unknown error'}',
@@ -211,7 +211,8 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
               showCustomSnackbar('Success', 'Category added successfully.',
                   backgroundColor: Colors.green);
             } else {
-              emit(state.copyWith(isAddingCategory: false));
+              emit(state.copyWith(
+                  isAddingCategory: false, selectedImageBytes: null));
               showCustomSnackbar(
                 'Error',
                 'Failed to add category: ${response['message'] ?? 'Unknown error'}',
@@ -274,6 +275,8 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
             emit(state.copyWith(isAddingService: false));
             showCustomSnackbar('Error', 'An error occurred: ${e.toString()}');
           }
+        }, selectImage: (event) async {
+          emit(state.copyWith(selectedImageBytes: event.imageBytes));
         });
       },
     );

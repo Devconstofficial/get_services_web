@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_services/components/categories/model/categories_model.dart';
 import 'package:get_services/gen/color_constant.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_network/image_network.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../gen/assets.gen.dart';
@@ -22,7 +23,6 @@ class CategoriesForm extends StatefulWidget {
 }
 
 class _CategoriesFormState extends State<CategoriesForm> {
-  Uint8List? _bytes;
   PaginatorController paginatorController = PaginatorController();
   late CategoriesBloc categoriesBloc;
 
@@ -182,9 +182,9 @@ class _CategoriesFormState extends State<CategoriesForm> {
                                   SizedBox(height: Adaptive.sp(20)),
                                   InkWell(
                                     onTap: () {
-                                      setState(() {
-                                        _bytes = null;
-                                      });
+                                      // categoriesBloc.add(
+                                      //     const CategoriesEvent.selectImage(
+                                      //         imageBytes: null));
                                       _addCategoryForm(constraint);
                                     },
                                     child: Container(
@@ -389,27 +389,28 @@ class _CategoriesFormState extends State<CategoriesForm> {
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
             leading: Container(
-              padding: EdgeInsets.all(Adaptive.sp(10)),
+              width: getWidth(54),
+              height: getHeight(54),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: borderColor)),
-              child: Image.network(
-                // e.imagePath,
-                "https://via.placeholder.com/150",
-                width: Adaptive.sp(18),
-                // errorBuilder: (context, error, stackTrace) {
-                //   return Icon(Icons.broken_image,
-                //       size: getHeight(32), color: Colors.grey);
-                // },
-                // loadingBuilder: (context, child, loadingProgress) {
-                //   if (loadingProgress == null) return child;
-                //   return CircularProgressIndicator(
-                //     value: loadingProgress.expectedTotalBytes != null
-                //         ? loadingProgress.cumulativeBytesLoaded /
-                //             (loadingProgress.expectedTotalBytes ?? 1)
-                //         : null,
-                //   );
-                // },
+              child: Center(
+                child: ImageNetwork(
+                  image: e.imagePath,
+                  width: getWidth(36),
+                  height: getHeight(36),
+                  duration: 1500,
+                  curve: Curves.easeIn,
+                  onPointer: true,
+                  debugPrint: false,
+                  fitAndroidIos: BoxFit.contain,
+                  fitWeb: BoxFitWeb.contain,
+                  onError: Icon(Icons.broken_image,
+                      size: getHeight(32), color: greyColor),
+                  onLoading: const CircularProgressIndicator(
+                    color: primaryColor,
+                  ),
+                ),
               ),
             ),
             trailing: state.isDeletionModeCategory
@@ -518,232 +519,242 @@ class _CategoriesFormState extends State<CategoriesForm> {
     );
   }
 
-  Future<void> _addCategoryForm(BoxConstraints constraint) async {
+  _addCategoryForm(BoxConstraints constraint) {
     TextEditingController controller = TextEditingController();
-    bool isLoading = false;
 
     return showDialog(
         context: context,
         builder: (BuildContext context) {
-          return StatefulBuilder(builder: (context, addState) {
-            return Dialog(
-              child: Material(
-                color: Colors.transparent,
-                child: Container(
-                  width: Adaptive.sp(66),
-                  padding: EdgeInsets.symmetric(
-                      vertical: Adaptive.sp(12), horizontal: Adaptive.sp(24)),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: appBlackColor.withOpacity(0.4),
-                        offset: const Offset(0, 1),
-                        blurRadius: 2,
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "addCategory".tr(),
-                        style: GoogleFonts.nunitoSans(
-                            fontSize: 12.5.sp, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: Adaptive.sp(8)),
-                      Text(
-                        "attachImage".tr(),
-                        style: GoogleFonts.nunitoSans(
-                            fontSize: 11.sp,
-                            color: appBlackColor,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(height: Adaptive.sp(8)),
-                      InkWell(
-                        onTap: () async {
-                          FilePickerResult? result =
-                              await FilePicker.platform.pickFiles(
-                            type: FileType.custom,
-                            allowedExtensions: ['jpg', 'png', 'jpeg'],
-                          );
-                          if (result != null) {
-                            addState(() {
-                              _bytes = result.files.first.bytes!;
-                            });
-                          }
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: borderColor, width: 1),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: appBlackColor.withOpacity(0.4),
-                                  offset: const Offset(0, 1),
-                                  blurRadius: 2,
-                                ),
-                              ],
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Column(
-                            children: [
-                              SizedBox(height: Adaptive.sp(12)),
-                              Text(
-                                "attachImage1".tr(),
-                                style: GoogleFonts.nunitoSans(
-                                    fontSize: 11.sp,
-                                    color: borderColor,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              SizedBox(height: Adaptive.sp(8)),
-                              Image.asset(
-                                Assets.images.addImage.path,
-                                width: Adaptive.sp(18),
-                              ),
-                              SizedBox(height: Adaptive.sp(12)),
-                            ],
-                          ),
-                        ),
-                      ),
-                      if (_bytes != null) ...[
-                        SizedBox(height: Adaptive.sp(12)),
-                        Stack(
-                          alignment: Alignment.topRight,
-                          children: [
-                            ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.memory(_bytes!,
-                                    fit: BoxFit.fitWidth,
-                                    width: Adaptive.sp(40))),
-                            IconButton(
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(),
-                              visualDensity: const VisualDensity(
-                                  vertical: -2, horizontal: -2),
-                              onPressed: () async {
-                                addState(() {
-                                  _bytes = null;
-                                });
-                              },
-                              icon: SvgPicture.asset(
-                                Assets.images.close,
-                                width: Adaptive.sp(12),
-                              ),
+          return BlocProvider.value(
+            value: categoriesBloc,
+            child: BlocBuilder<CategoriesBloc, CategoriesState>(
+              builder: (context, state) {
+                return StatefulBuilder(builder: (context, addState) {
+                  return Dialog(
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Container(
+                        width: Adaptive.sp(66),
+                        padding: EdgeInsets.symmetric(
+                            vertical: Adaptive.sp(12),
+                            horizontal: Adaptive.sp(24)),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: appBlackColor.withOpacity(0.4),
+                              offset: const Offset(0, 1),
+                              blurRadius: 2,
                             ),
                           ],
-                        )
-                      ],
-                      SizedBox(height: Adaptive.sp(12)),
-                      TextField(
-                        controller: controller,
-                        cursorColor: primaryColor,
-                        textAlignVertical: TextAlignVertical.center,
-                        style: GoogleFonts.nunitoSans(
-                            color: primaryColor,
-                            fontSize: constraint.maxWidth >= 824
-                                ? 12.sp
-                                : constraint.maxWidth < 824 &&
-                                        constraint.maxWidth >= 750
-                                    ? 12.5.sp
-                                    : 13.sp),
-                        decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          isCollapsed: true,
-                          isDense: true,
-                          constraints: const BoxConstraints(),
-                          prefixIconConstraints: const BoxConstraints(),
-                          hintText: "enterCategoryName".tr(),
-                          hintStyle: GoogleFonts.nunitoSans(
-                              color: borderColor,
-                              fontSize: constraint.maxWidth >= 824
-                                  ? 12.sp
-                                  : constraint.maxWidth < 824 &&
-                                          constraint.maxWidth >= 750
-                                      ? 12.5.sp
-                                      : 13.sp),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: Adaptive.sp(constraint.maxWidth >= 824
-                                ? 11
-                                : constraint.maxWidth >= 750
-                                    ? 12
-                                    : constraint.maxWidth >= 650
-                                        ? 13
-                                        : 14),
-                            horizontal: Adaptive.sp(12),
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: borderColor,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: borderColor,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: borderColor,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
                         ),
-                      ),
-                      SizedBox(height: Adaptive.sp(12)),
-                      isLoading
-                          ? const CircularProgressIndicator(
-                              color: primaryColor,
-                            )
-                          : Center(
-                              child: InkWell(
-                                onTap: () {
-                                  if (_bytes != null) {
-                                    addState(() {
-                                      isLoading = true;
-                                    });
-                                    if (kIsWeb) {
-                                      categoriesBloc
-                                          .add(CategoriesEvent.addCategory(
-                                        name: controller.text.trim(),
-                                        imageFile: _bytes,
-                                      ));
-                                      addState(() {
-                                        isLoading = false;
-                                      });
-                                    }
-                                  }
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: Adaptive.sp(8),
-                                      horizontal: Adaptive.sp(16)),
-                                  decoration: BoxDecoration(
-                                      color: primaryColor,
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: primaryColor)),
-                                  child: Text(
-                                    "addNow".tr(),
-                                    style: GoogleFonts.nunitoSans(
-                                      color: Colors.white,
-                                      fontSize: 11.5.sp,
-                                      fontWeight: FontWeight.w600,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "addCategory".tr(),
+                              style: GoogleFonts.nunitoSans(
+                                  fontSize: 12.5.sp,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: Adaptive.sp(8)),
+                            Text(
+                              "attachImage".tr(),
+                              style: GoogleFonts.nunitoSans(
+                                  fontSize: 11.sp,
+                                  color: appBlackColor,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(height: Adaptive.sp(8)),
+                            InkWell(
+                              onTap: () async {
+                                FilePickerResult? result =
+                                    await FilePicker.platform.pickFiles(
+                                  type: FileType.custom,
+                                  allowedExtensions: ['jpg', 'png', 'jpeg'],
+                                );
+                                if (result != null) {
+                                  categoriesBloc.add(
+                                      CategoriesEvent.selectImage(
+                                          imageBytes:
+                                              result.files.first.bytes!));
+                                  print('imagee ${state.selectedImageBytes}');
+                                }
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: borderColor, width: 1),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: appBlackColor.withOpacity(0.4),
+                                        offset: const Offset(0, 1),
+                                        blurRadius: 2,
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Column(
+                                  children: [
+                                    SizedBox(height: Adaptive.sp(12)),
+                                    Text(
+                                      "attachImage1".tr(),
+                                      style: GoogleFonts.nunitoSans(
+                                          fontSize: 11.sp,
+                                          color: borderColor,
+                                          fontWeight: FontWeight.w500),
                                     ),
-                                  ),
+                                    SizedBox(height: Adaptive.sp(8)),
+                                    Image.asset(
+                                      Assets.images.addImage.path,
+                                      width: Adaptive.sp(18),
+                                    ),
+                                    SizedBox(height: Adaptive.sp(12)),
+                                  ],
                                 ),
                               ),
-                            )
-                    ],
-                  ),
-                ),
-              ),
-            );
-          });
+                            ),
+                            if (state.selectedImageBytes != null) ...[
+                              SizedBox(height: Adaptive.sp(12)),
+                              Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Image.memory(
+                                          state.selectedImageBytes!,
+                                          fit: BoxFit.fitWidth,
+                                          width: Adaptive.sp(40))),
+                                  IconButton(
+                                    padding: EdgeInsets.zero,
+                                    constraints: const BoxConstraints(),
+                                    visualDensity: const VisualDensity(
+                                        vertical: -2, horizontal: -2),
+                                    onPressed: () async {
+                                      categoriesBloc.add(
+                                          const CategoriesEvent.selectImage(
+                                              imageBytes: null));
+                                    },
+                                    icon: SvgPicture.asset(
+                                      Assets.images.close,
+                                      width: Adaptive.sp(12),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                            SizedBox(height: Adaptive.sp(12)),
+                            TextField(
+                              controller: controller,
+                              cursorColor: primaryColor,
+                              textAlignVertical: TextAlignVertical.center,
+                              style: GoogleFonts.nunitoSans(
+                                  color: primaryColor,
+                                  fontSize: constraint.maxWidth >= 824
+                                      ? 12.sp
+                                      : constraint.maxWidth < 824 &&
+                                              constraint.maxWidth >= 750
+                                          ? 12.5.sp
+                                          : 13.sp),
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                isCollapsed: true,
+                                isDense: true,
+                                constraints: const BoxConstraints(),
+                                prefixIconConstraints: const BoxConstraints(),
+                                hintText: "enterCategoryName".tr(),
+                                hintStyle: GoogleFonts.nunitoSans(
+                                    color: borderColor,
+                                    fontSize: constraint.maxWidth >= 824
+                                        ? 12.sp
+                                        : constraint.maxWidth < 824 &&
+                                                constraint.maxWidth >= 750
+                                            ? 12.5.sp
+                                            : 13.sp),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical:
+                                      Adaptive.sp(constraint.maxWidth >= 824
+                                          ? 11
+                                          : constraint.maxWidth >= 750
+                                              ? 12
+                                              : constraint.maxWidth >= 650
+                                                  ? 13
+                                                  : 14),
+                                  horizontal: Adaptive.sp(12),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: borderColor,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: borderColor,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: borderColor,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: Adaptive.sp(12)),
+                            state.isAddingCategory
+                                ? const CircularProgressIndicator(
+                                    color: primaryColor,
+                                  )
+                                : Center(
+                                    child: InkWell(
+                                      onTap: () {
+                                        if (state.selectedImageBytes != null) {
+                                          if (kIsWeb) {
+                                            categoriesBloc.add(
+                                                CategoriesEvent.addCategory(
+                                              name: controller.text.trim(),
+                                              imageFile:
+                                                  state.selectedImageBytes,
+                                            ));
+                                          }
+                                        }
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: Adaptive.sp(8),
+                                            horizontal: Adaptive.sp(16)),
+                                        decoration: BoxDecoration(
+                                            color: primaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                                color: primaryColor)),
+                                        child: Text(
+                                          "addNow".tr(),
+                                          style: GoogleFonts.nunitoSans(
+                                            color: Colors.white,
+                                            fontSize: 11.5.sp,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                });
+              },
+            ),
+          );
         });
   }
 

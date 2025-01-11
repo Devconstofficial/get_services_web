@@ -192,30 +192,26 @@ class _ProviderFormState extends State<ProviderForm> {
                     ),
                   ),
                   SizedBox(height: Adaptive.sp(14)),
-                  BlocBuilder<ProvidersBloc, ProvidersState>(
-                    builder: (context, state) {
-                      return Expanded(
-                          child: state.isLoading
-                              ? const Center(
-                                  child: CircularProgressIndicator(
-                                    color: primaryColor,
+                  Expanded(
+                      child: state.isLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: primaryColor,
+                              ),
+                            )
+                          : state.filteredProviderRequests.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    "No providers",
+                                    style: GoogleFonts.nunitoSans(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 )
-                              : state.filteredProviderRequests.isEmpty
-                                  ? Center(
-                                      child: Text(
-                                        "No providers",
-                                        style: GoogleFonts.nunitoSans(
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    )
-                                  : _buildProviderTable(
-                                      state.filteredProviderRequests, state));
-                    },
-                  ),
+                              : _buildProviderTable(
+                                  state.filteredProviderRequests, state)),
                 ],
               ),
             );
@@ -313,7 +309,8 @@ class _ProviderFormState extends State<ProviderForm> {
                   DataColumn(label: Text("")),
                   DataColumn(label: Text("")),
                 ],
-                source: ProviderDataSource(requests, context),
+                source: ProviderDataSource(
+                    requests, context, context.read<ProvidersBloc>()),
                 rowsPerPage: 5,
                 showFirstLastButtons: false,
               ),
@@ -887,11 +884,11 @@ class _ProviderFormState extends State<ProviderForm> {
 
 class ProviderDataSource extends DataTableSource {
   final List<ProviderRequestModel> providerRequests;
-  final ProvidersBloc providersBloc = ProvidersBloc();
   BuildContext context;
   String? selectedStatus;
+  ProvidersBloc providersBloc;
 
-  ProviderDataSource(this.providerRequests, this.context);
+  ProviderDataSource(this.providerRequests, this.context, this.providersBloc);
   Future<void> _displayStatusDialog(
       BuildContext context, String providerId) async {
     return showDialog(

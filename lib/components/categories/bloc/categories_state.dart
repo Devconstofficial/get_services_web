@@ -11,6 +11,7 @@ class CategoriesState with _$CategoriesState {
     required bool isAddingService,
     required bool isAddingCategory,
     required List<CategoriesData> categories,
+    required Uint8List? selectedImageBytes,
   }) = _CategoriesState;
 
   factory CategoriesState.initial() => const CategoriesState(
@@ -22,5 +23,6 @@ class CategoriesState with _$CategoriesState {
         deletingCategoryId: null,
         deletingSubCategoryId: null,
         categories: [],
+        selectedImageBytes: null,
       );
 }

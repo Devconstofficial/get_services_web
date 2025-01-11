@@ -26,6 +26,7 @@ mixin _$CategoriesEvent {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$CategoriesEvent {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$CategoriesEvent {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +69,7 @@ mixin _$CategoriesEvent {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +85,7 @@ mixin _$CategoriesEvent {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -95,6 +100,7 @@ mixin _$CategoriesEvent {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -193,6 +199,7 @@ class _$ChangeDeleteModeCategoryImpl implements _ChangeDeleteModeCategory {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return changeDeleteModeCategory(value);
   }
@@ -208,6 +215,7 @@ class _$ChangeDeleteModeCategoryImpl implements _ChangeDeleteModeCategory {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return changeDeleteModeCategory?.call(value);
   }
@@ -223,6 +231,7 @@ class _$ChangeDeleteModeCategoryImpl implements _ChangeDeleteModeCategory {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (changeDeleteModeCategory != null) {
@@ -245,6 +254,7 @@ class _$ChangeDeleteModeCategoryImpl implements _ChangeDeleteModeCategory {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return changeDeleteModeCategory(this);
   }
@@ -263,6 +273,7 @@ class _$ChangeDeleteModeCategoryImpl implements _ChangeDeleteModeCategory {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return changeDeleteModeCategory?.call(this);
   }
@@ -280,6 +291,7 @@ class _$ChangeDeleteModeCategoryImpl implements _ChangeDeleteModeCategory {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (changeDeleteModeCategory != null) {
@@ -372,6 +384,7 @@ class _$SetCurrentCategoryImpl implements _SetCurrentCategory {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return setCurrentCategory(index);
   }
@@ -387,6 +400,7 @@ class _$SetCurrentCategoryImpl implements _SetCurrentCategory {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return setCurrentCategory?.call(index);
   }
@@ -402,6 +416,7 @@ class _$SetCurrentCategoryImpl implements _SetCurrentCategory {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (setCurrentCategory != null) {
@@ -424,6 +439,7 @@ class _$SetCurrentCategoryImpl implements _SetCurrentCategory {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return setCurrentCategory(this);
   }
@@ -442,6 +458,7 @@ class _$SetCurrentCategoryImpl implements _SetCurrentCategory {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return setCurrentCategory?.call(this);
   }
@@ -459,6 +476,7 @@ class _$SetCurrentCategoryImpl implements _SetCurrentCategory {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (setCurrentCategory != null) {
@@ -555,6 +573,7 @@ class _$ChangeDeleteModeSubCategoryImpl
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return changeDeleteModeSubCategory(value);
   }
@@ -570,6 +589,7 @@ class _$ChangeDeleteModeSubCategoryImpl
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return changeDeleteModeSubCategory?.call(value);
   }
@@ -585,6 +605,7 @@ class _$ChangeDeleteModeSubCategoryImpl
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (changeDeleteModeSubCategory != null) {
@@ -607,6 +628,7 @@ class _$ChangeDeleteModeSubCategoryImpl
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return changeDeleteModeSubCategory(this);
   }
@@ -625,6 +647,7 @@ class _$ChangeDeleteModeSubCategoryImpl
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return changeDeleteModeSubCategory?.call(this);
   }
@@ -642,6 +665,7 @@ class _$ChangeDeleteModeSubCategoryImpl
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (changeDeleteModeSubCategory != null) {
@@ -711,6 +735,7 @@ class _$FetchCategoriesAndServicesImpl implements _FetchCategoriesAndServices {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return fetchCategoriesAndServices();
   }
@@ -726,6 +751,7 @@ class _$FetchCategoriesAndServicesImpl implements _FetchCategoriesAndServices {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return fetchCategoriesAndServices?.call();
   }
@@ -741,6 +767,7 @@ class _$FetchCategoriesAndServicesImpl implements _FetchCategoriesAndServices {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (fetchCategoriesAndServices != null) {
@@ -763,6 +790,7 @@ class _$FetchCategoriesAndServicesImpl implements _FetchCategoriesAndServices {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return fetchCategoriesAndServices(this);
   }
@@ -781,6 +809,7 @@ class _$FetchCategoriesAndServicesImpl implements _FetchCategoriesAndServices {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return fetchCategoriesAndServices?.call(this);
   }
@@ -798,6 +827,7 @@ class _$FetchCategoriesAndServicesImpl implements _FetchCategoriesAndServices {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (fetchCategoriesAndServices != null) {
@@ -886,6 +916,7 @@ class _$DeleteCategoryImpl implements _DeleteCategory {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return deleteCategory(categoryId);
   }
@@ -901,6 +932,7 @@ class _$DeleteCategoryImpl implements _DeleteCategory {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return deleteCategory?.call(categoryId);
   }
@@ -916,6 +948,7 @@ class _$DeleteCategoryImpl implements _DeleteCategory {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (deleteCategory != null) {
@@ -938,6 +971,7 @@ class _$DeleteCategoryImpl implements _DeleteCategory {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return deleteCategory(this);
   }
@@ -956,6 +990,7 @@ class _$DeleteCategoryImpl implements _DeleteCategory {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return deleteCategory?.call(this);
   }
@@ -973,6 +1008,7 @@ class _$DeleteCategoryImpl implements _DeleteCategory {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (deleteCategory != null) {
@@ -1066,6 +1102,7 @@ class _$DeleteSubCategoryImpl implements _DeleteSubCategory {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return deleteSubCategory(subCategoryId);
   }
@@ -1081,6 +1118,7 @@ class _$DeleteSubCategoryImpl implements _DeleteSubCategory {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return deleteSubCategory?.call(subCategoryId);
   }
@@ -1096,6 +1134,7 @@ class _$DeleteSubCategoryImpl implements _DeleteSubCategory {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (deleteSubCategory != null) {
@@ -1118,6 +1157,7 @@ class _$DeleteSubCategoryImpl implements _DeleteSubCategory {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return deleteSubCategory(this);
   }
@@ -1136,6 +1176,7 @@ class _$DeleteSubCategoryImpl implements _DeleteSubCategory {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return deleteSubCategory?.call(this);
   }
@@ -1153,6 +1194,7 @@ class _$DeleteSubCategoryImpl implements _DeleteSubCategory {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (deleteSubCategory != null) {
@@ -1253,6 +1295,7 @@ class _$AddCategoryImpl implements AddCategory {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return addCategory(name, imageFile);
   }
@@ -1268,6 +1311,7 @@ class _$AddCategoryImpl implements AddCategory {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return addCategory?.call(name, imageFile);
   }
@@ -1283,6 +1327,7 @@ class _$AddCategoryImpl implements AddCategory {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (addCategory != null) {
@@ -1305,6 +1350,7 @@ class _$AddCategoryImpl implements AddCategory {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return addCategory(this);
   }
@@ -1323,6 +1369,7 @@ class _$AddCategoryImpl implements AddCategory {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return addCategory?.call(this);
   }
@@ -1340,6 +1387,7 @@ class _$AddCategoryImpl implements AddCategory {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (addCategory != null) {
@@ -1443,6 +1491,7 @@ class _$AddServiceImpl implements _AddService {
     required TResult Function(String subCategoryId) deleteSubCategory,
     required TResult Function(String? name, dynamic imageFile) addCategory,
     required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
   }) {
     return addService(categoryId, serviceName);
   }
@@ -1458,6 +1507,7 @@ class _$AddServiceImpl implements _AddService {
     TResult? Function(String subCategoryId)? deleteSubCategory,
     TResult? Function(String? name, dynamic imageFile)? addCategory,
     TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
   }) {
     return addService?.call(categoryId, serviceName);
   }
@@ -1473,6 +1523,7 @@ class _$AddServiceImpl implements _AddService {
     TResult Function(String subCategoryId)? deleteSubCategory,
     TResult Function(String? name, dynamic imageFile)? addCategory,
     TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
     required TResult orElse(),
   }) {
     if (addService != null) {
@@ -1495,6 +1546,7 @@ class _$AddServiceImpl implements _AddService {
     required TResult Function(_DeleteSubCategory value) deleteSubCategory,
     required TResult Function(AddCategory value) addCategory,
     required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
   }) {
     return addService(this);
   }
@@ -1513,6 +1565,7 @@ class _$AddServiceImpl implements _AddService {
     TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult? Function(AddCategory value)? addCategory,
     TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
   }) {
     return addService?.call(this);
   }
@@ -1530,6 +1583,7 @@ class _$AddServiceImpl implements _AddService {
     TResult Function(_DeleteSubCategory value)? deleteSubCategory,
     TResult Function(AddCategory value)? addCategory,
     TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
     required TResult orElse(),
   }) {
     if (addService != null) {
@@ -1552,6 +1606,192 @@ abstract class _AddService implements CategoriesEvent {
 }
 
 /// @nodoc
+abstract class _$$SelectImageImplCopyWith<$Res> {
+  factory _$$SelectImageImplCopyWith(
+          _$SelectImageImpl value, $Res Function(_$SelectImageImpl) then) =
+      __$$SelectImageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Uint8List? imageBytes});
+}
+
+/// @nodoc
+class __$$SelectImageImplCopyWithImpl<$Res>
+    extends _$CategoriesEventCopyWithImpl<$Res, _$SelectImageImpl>
+    implements _$$SelectImageImplCopyWith<$Res> {
+  __$$SelectImageImplCopyWithImpl(
+      _$SelectImageImpl _value, $Res Function(_$SelectImageImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageBytes = freezed,
+  }) {
+    return _then(_$SelectImageImpl(
+      imageBytes: freezed == imageBytes
+          ? _value.imageBytes
+          : imageBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectImageImpl implements _SelectImage {
+  const _$SelectImageImpl({required this.imageBytes});
+
+  @override
+  final Uint8List? imageBytes;
+
+  @override
+  String toString() {
+    return 'CategoriesEvent.selectImage(imageBytes: $imageBytes)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectImageImpl &&
+            const DeepCollectionEquality()
+                .equals(other.imageBytes, imageBytes));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(imageBytes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectImageImplCopyWith<_$SelectImageImpl> get copyWith =>
+      __$$SelectImageImplCopyWithImpl<_$SelectImageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool value) changeDeleteModeCategory,
+    required TResult Function(int index) setCurrentCategory,
+    required TResult Function(bool value) changeDeleteModeSubCategory,
+    required TResult Function() fetchCategoriesAndServices,
+    required TResult Function(String categoryId) deleteCategory,
+    required TResult Function(String subCategoryId) deleteSubCategory,
+    required TResult Function(String? name, dynamic imageFile) addCategory,
+    required TResult Function(String categoryId, String serviceName) addService,
+    required TResult Function(Uint8List? imageBytes) selectImage,
+  }) {
+    return selectImage(imageBytes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool value)? changeDeleteModeCategory,
+    TResult? Function(int index)? setCurrentCategory,
+    TResult? Function(bool value)? changeDeleteModeSubCategory,
+    TResult? Function()? fetchCategoriesAndServices,
+    TResult? Function(String categoryId)? deleteCategory,
+    TResult? Function(String subCategoryId)? deleteSubCategory,
+    TResult? Function(String? name, dynamic imageFile)? addCategory,
+    TResult? Function(String categoryId, String serviceName)? addService,
+    TResult? Function(Uint8List? imageBytes)? selectImage,
+  }) {
+    return selectImage?.call(imageBytes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool value)? changeDeleteModeCategory,
+    TResult Function(int index)? setCurrentCategory,
+    TResult Function(bool value)? changeDeleteModeSubCategory,
+    TResult Function()? fetchCategoriesAndServices,
+    TResult Function(String categoryId)? deleteCategory,
+    TResult Function(String subCategoryId)? deleteSubCategory,
+    TResult Function(String? name, dynamic imageFile)? addCategory,
+    TResult Function(String categoryId, String serviceName)? addService,
+    TResult Function(Uint8List? imageBytes)? selectImage,
+    required TResult orElse(),
+  }) {
+    if (selectImage != null) {
+      return selectImage(imageBytes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeDeleteModeCategory value)
+        changeDeleteModeCategory,
+    required TResult Function(_SetCurrentCategory value) setCurrentCategory,
+    required TResult Function(_ChangeDeleteModeSubCategory value)
+        changeDeleteModeSubCategory,
+    required TResult Function(_FetchCategoriesAndServices value)
+        fetchCategoriesAndServices,
+    required TResult Function(_DeleteCategory value) deleteCategory,
+    required TResult Function(_DeleteSubCategory value) deleteSubCategory,
+    required TResult Function(AddCategory value) addCategory,
+    required TResult Function(_AddService value) addService,
+    required TResult Function(_SelectImage value) selectImage,
+  }) {
+    return selectImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeDeleteModeCategory value)?
+        changeDeleteModeCategory,
+    TResult? Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult? Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
+    TResult? Function(_FetchCategoriesAndServices value)?
+        fetchCategoriesAndServices,
+    TResult? Function(_DeleteCategory value)? deleteCategory,
+    TResult? Function(_DeleteSubCategory value)? deleteSubCategory,
+    TResult? Function(AddCategory value)? addCategory,
+    TResult? Function(_AddService value)? addService,
+    TResult? Function(_SelectImage value)? selectImage,
+  }) {
+    return selectImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeDeleteModeCategory value)? changeDeleteModeCategory,
+    TResult Function(_SetCurrentCategory value)? setCurrentCategory,
+    TResult Function(_ChangeDeleteModeSubCategory value)?
+        changeDeleteModeSubCategory,
+    TResult Function(_FetchCategoriesAndServices value)?
+        fetchCategoriesAndServices,
+    TResult Function(_DeleteCategory value)? deleteCategory,
+    TResult Function(_DeleteSubCategory value)? deleteSubCategory,
+    TResult Function(AddCategory value)? addCategory,
+    TResult Function(_AddService value)? addService,
+    TResult Function(_SelectImage value)? selectImage,
+    required TResult orElse(),
+  }) {
+    if (selectImage != null) {
+      return selectImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectImage implements CategoriesEvent {
+  const factory _SelectImage({required final Uint8List? imageBytes}) =
+      _$SelectImageImpl;
+
+  Uint8List? get imageBytes;
+  @JsonKey(ignore: true)
+  _$$SelectImageImplCopyWith<_$SelectImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CategoriesState {
   bool get isDeletionModeCategory => throw _privateConstructorUsedError;
   bool get isDeletionModeSubcategory => throw _privateConstructorUsedError;
@@ -1561,6 +1801,7 @@ mixin _$CategoriesState {
   bool get isAddingService => throw _privateConstructorUsedError;
   bool get isAddingCategory => throw _privateConstructorUsedError;
   List<CategoriesData> get categories => throw _privateConstructorUsedError;
+  Uint8List? get selectedImageBytes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CategoriesStateCopyWith<CategoriesState> get copyWith =>
@@ -1581,7 +1822,8 @@ abstract class $CategoriesStateCopyWith<$Res> {
       bool isLoading,
       bool isAddingService,
       bool isAddingCategory,
-      List<CategoriesData> categories});
+      List<CategoriesData> categories,
+      Uint8List? selectedImageBytes});
 }
 
 /// @nodoc
@@ -1605,6 +1847,7 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
     Object? isAddingService = null,
     Object? isAddingCategory = null,
     Object? categories = null,
+    Object? selectedImageBytes = freezed,
   }) {
     return _then(_value.copyWith(
       isDeletionModeCategory: null == isDeletionModeCategory
@@ -1639,6 +1882,10 @@ class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<CategoriesData>,
+      selectedImageBytes: freezed == selectedImageBytes
+          ? _value.selectedImageBytes
+          : selectedImageBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
     ) as $Val);
   }
 }
@@ -1659,7 +1906,8 @@ abstract class _$$CategoriesStateImplCopyWith<$Res>
       bool isLoading,
       bool isAddingService,
       bool isAddingCategory,
-      List<CategoriesData> categories});
+      List<CategoriesData> categories,
+      Uint8List? selectedImageBytes});
 }
 
 /// @nodoc
@@ -1681,6 +1929,7 @@ class __$$CategoriesStateImplCopyWithImpl<$Res>
     Object? isAddingService = null,
     Object? isAddingCategory = null,
     Object? categories = null,
+    Object? selectedImageBytes = freezed,
   }) {
     return _then(_$CategoriesStateImpl(
       isDeletionModeCategory: null == isDeletionModeCategory
@@ -1715,6 +1964,10 @@ class __$$CategoriesStateImplCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<CategoriesData>,
+      selectedImageBytes: freezed == selectedImageBytes
+          ? _value.selectedImageBytes
+          : selectedImageBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
     ));
   }
 }
@@ -1730,7 +1983,8 @@ class _$CategoriesStateImpl implements _CategoriesState {
       required this.isLoading,
       required this.isAddingService,
       required this.isAddingCategory,
-      required final List<CategoriesData> categories})
+      required final List<CategoriesData> categories,
+      required this.selectedImageBytes})
       : _categories = categories;
 
   @override
@@ -1756,8 +2010,11 @@ class _$CategoriesStateImpl implements _CategoriesState {
   }
 
   @override
+  final Uint8List? selectedImageBytes;
+
+  @override
   String toString() {
-    return 'CategoriesState(isDeletionModeCategory: $isDeletionModeCategory, isDeletionModeSubcategory: $isDeletionModeSubcategory, deletingCategoryId: $deletingCategoryId, deletingSubCategoryId: $deletingSubCategoryId, isLoading: $isLoading, isAddingService: $isAddingService, isAddingCategory: $isAddingCategory, categories: $categories)';
+    return 'CategoriesState(isDeletionModeCategory: $isDeletionModeCategory, isDeletionModeSubcategory: $isDeletionModeSubcategory, deletingCategoryId: $deletingCategoryId, deletingSubCategoryId: $deletingSubCategoryId, isLoading: $isLoading, isAddingService: $isAddingService, isAddingCategory: $isAddingCategory, categories: $categories, selectedImageBytes: $selectedImageBytes)';
   }
 
   @override
@@ -1781,7 +2038,9 @@ class _$CategoriesStateImpl implements _CategoriesState {
             (identical(other.isAddingCategory, isAddingCategory) ||
                 other.isAddingCategory == isAddingCategory) &&
             const DeepCollectionEquality()
-                .equals(other._categories, _categories));
+                .equals(other._categories, _categories) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedImageBytes, selectedImageBytes));
   }
 
   @override
@@ -1794,7 +2053,8 @@ class _$CategoriesStateImpl implements _CategoriesState {
       isLoading,
       isAddingService,
       isAddingCategory,
-      const DeepCollectionEquality().hash(_categories));
+      const DeepCollectionEquality().hash(_categories),
+      const DeepCollectionEquality().hash(selectedImageBytes));
 
   @JsonKey(ignore: true)
   @override
@@ -1813,7 +2073,8 @@ abstract class _CategoriesState implements CategoriesState {
       required final bool isLoading,
       required final bool isAddingService,
       required final bool isAddingCategory,
-      required final List<CategoriesData> categories}) = _$CategoriesStateImpl;
+      required final List<CategoriesData> categories,
+      required final Uint8List? selectedImageBytes}) = _$CategoriesStateImpl;
 
   @override
   bool get isDeletionModeCategory;
@@ -1831,6 +2092,8 @@ abstract class _CategoriesState implements CategoriesState {
   bool get isAddingCategory;
   @override
   List<CategoriesData> get categories;
+  @override
+  Uint8List? get selectedImageBytes;
   @override
   @JsonKey(ignore: true)
   _$$CategoriesStateImplCopyWith<_$CategoriesStateImpl> get copyWith =>

@@ -473,7 +473,8 @@ class _DashboardFormState extends State<DashboardForm> {
                   DataColumn(label: Text("")),
                   DataColumn(label: Text("")),
                 ],
-                source: ProviderDataSource(requests, context),
+                source: ProviderDataSource(
+                    requests, context, context.read<DashBoardBloc>()),
                 rowsPerPage: 5,
                 showFirstLastButtons: false,
               ),
@@ -683,11 +684,11 @@ class _DashboardFormState extends State<DashboardForm> {
 
 class ProviderDataSource extends DataTableSource {
   final List<ProviderRequestModel> providerRequests;
-  final DashBoardBloc dashBoardBloc = DashBoardBloc();
+  DashBoardBloc dashBoardBloc;
   BuildContext context;
   String? selectedStatus;
 
-  ProviderDataSource(this.providerRequests, this.context);
+  ProviderDataSource(this.providerRequests, this.context, this.dashBoardBloc);
 
   @override
   DataRow getRow(int index) {

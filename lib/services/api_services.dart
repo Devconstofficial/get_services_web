@@ -21,6 +21,19 @@ class ApiServices {
     }
   }
 
+  static Future<Map<String, dynamic>> forgotPassword(
+      {required Map<String, dynamic> body}) async {
+    try {
+      Response response = await HttpServiceManager.post(
+        endPoint: Url.forgotPassword,
+        body: body,
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   static Future<Map<String, dynamic>> viewAllProviders() async {
     final token = await prefs.getUserToken();
     try {

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_services/components/categories/bloc/categories_bloc.dart';
 import 'package:get_services/components/forgot_password/bloc/forgot_password_bloc.dart';
 import 'package:get_services/components/login/Auth_screen.dart';
 import 'package:get_services/components/login/bloc/login_bloc.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => ProvidersBloc()),
         BlocProvider(create: (_) => LoginBloc()),
         BlocProvider(create: (_) => ForgotPasswordBloc()),
+        BlocProvider(create: (_) => CategoriesBloc()),
       ],
       child: ResponsiveSizer(
         builder: (context, orientation, screenType) {

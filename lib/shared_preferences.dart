@@ -42,7 +42,6 @@ class PreferencesService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove(_userModelKey);
     await prefs.remove(_loginUserKey);
-
     await prefs.remove(_userTokenKey);
   }
 }

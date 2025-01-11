@@ -27,7 +27,7 @@ class ForgotPasswordBloc
           } else {
             emit(state.copyWith(isLoading: true));
             try {
-              final response = await ApiServices.login(body: {
+              final response = await ApiServices.forgotPassword(body: {
                 'phoneNumber': state.phoneNumber,
                 'password': state.passwordController.text,
               });
