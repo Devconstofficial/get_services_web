@@ -21,8 +21,14 @@ mixin _$ProvidersEvent {
     required TResult Function() resetFilter,
     required TResult Function(int index) changeCurrentTablePageIndex,
     required TResult Function(int index, bool value) setProviderStatus,
-    required TResult Function(DateTime? startDate, DateTime? endDate)
-        changeFilterDate,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,7 +36,14 @@ mixin _$ProvidersEvent {
     TResult? Function()? resetFilter,
     TResult? Function(int index)? changeCurrentTablePageIndex,
     TResult? Function(int index, bool value)? setProviderStatus,
-    TResult? Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,7 +51,14 @@ mixin _$ProvidersEvent {
     TResult Function()? resetFilter,
     TResult Function(int index)? changeCurrentTablePageIndex,
     TResult Function(int index, bool value)? setProviderStatus,
-    TResult Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,7 +68,13 @@ mixin _$ProvidersEvent {
     required TResult Function(_ChangeCurrentTablePageIndex value)
         changeCurrentTablePageIndex,
     required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
     required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,7 +83,12 @@ mixin _$ProvidersEvent {
     TResult? Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
     TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,7 +97,12 @@ mixin _$ProvidersEvent {
     TResult Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
     TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,8 +167,14 @@ class _$ResetFilterImpl implements _ResetFilter {
     required TResult Function() resetFilter,
     required TResult Function(int index) changeCurrentTablePageIndex,
     required TResult Function(int index, bool value) setProviderStatus,
-    required TResult Function(DateTime? startDate, DateTime? endDate)
-        changeFilterDate,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
   }) {
     return resetFilter();
   }
@@ -143,7 +185,14 @@ class _$ResetFilterImpl implements _ResetFilter {
     TResult? Function()? resetFilter,
     TResult? Function(int index)? changeCurrentTablePageIndex,
     TResult? Function(int index, bool value)? setProviderStatus,
-    TResult? Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
   }) {
     return resetFilter?.call();
   }
@@ -154,7 +203,14 @@ class _$ResetFilterImpl implements _ResetFilter {
     TResult Function()? resetFilter,
     TResult Function(int index)? changeCurrentTablePageIndex,
     TResult Function(int index, bool value)? setProviderStatus,
-    TResult Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
     required TResult orElse(),
   }) {
     if (resetFilter != null) {
@@ -170,7 +226,13 @@ class _$ResetFilterImpl implements _ResetFilter {
     required TResult Function(_ChangeCurrentTablePageIndex value)
         changeCurrentTablePageIndex,
     required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
     required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
   }) {
     return resetFilter(this);
   }
@@ -182,7 +244,12 @@ class _$ResetFilterImpl implements _ResetFilter {
     TResult? Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
     TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
   }) {
     return resetFilter?.call(this);
   }
@@ -194,7 +261,12 @@ class _$ResetFilterImpl implements _ResetFilter {
     TResult Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
     TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
     required TResult orElse(),
   }) {
     if (resetFilter != null) {
@@ -280,8 +352,14 @@ class _$ChangeCurrentTablePageIndexImpl
     required TResult Function() resetFilter,
     required TResult Function(int index) changeCurrentTablePageIndex,
     required TResult Function(int index, bool value) setProviderStatus,
-    required TResult Function(DateTime? startDate, DateTime? endDate)
-        changeFilterDate,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
   }) {
     return changeCurrentTablePageIndex(index);
   }
@@ -292,7 +370,14 @@ class _$ChangeCurrentTablePageIndexImpl
     TResult? Function()? resetFilter,
     TResult? Function(int index)? changeCurrentTablePageIndex,
     TResult? Function(int index, bool value)? setProviderStatus,
-    TResult? Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
   }) {
     return changeCurrentTablePageIndex?.call(index);
   }
@@ -303,7 +388,14 @@ class _$ChangeCurrentTablePageIndexImpl
     TResult Function()? resetFilter,
     TResult Function(int index)? changeCurrentTablePageIndex,
     TResult Function(int index, bool value)? setProviderStatus,
-    TResult Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
     required TResult orElse(),
   }) {
     if (changeCurrentTablePageIndex != null) {
@@ -319,7 +411,13 @@ class _$ChangeCurrentTablePageIndexImpl
     required TResult Function(_ChangeCurrentTablePageIndex value)
         changeCurrentTablePageIndex,
     required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
     required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
   }) {
     return changeCurrentTablePageIndex(this);
   }
@@ -331,7 +429,12 @@ class _$ChangeCurrentTablePageIndexImpl
     TResult? Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
     TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
   }) {
     return changeCurrentTablePageIndex?.call(this);
   }
@@ -343,7 +446,12 @@ class _$ChangeCurrentTablePageIndexImpl
     TResult Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
     TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
     required TResult orElse(),
   }) {
     if (changeCurrentTablePageIndex != null) {
@@ -439,8 +547,14 @@ class _$SetProviderStatusImpl implements _SetProviderStatus {
     required TResult Function() resetFilter,
     required TResult Function(int index) changeCurrentTablePageIndex,
     required TResult Function(int index, bool value) setProviderStatus,
-    required TResult Function(DateTime? startDate, DateTime? endDate)
-        changeFilterDate,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
   }) {
     return setProviderStatus(index, value);
   }
@@ -451,7 +565,14 @@ class _$SetProviderStatusImpl implements _SetProviderStatus {
     TResult? Function()? resetFilter,
     TResult? Function(int index)? changeCurrentTablePageIndex,
     TResult? Function(int index, bool value)? setProviderStatus,
-    TResult? Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
   }) {
     return setProviderStatus?.call(index, value);
   }
@@ -462,7 +583,14 @@ class _$SetProviderStatusImpl implements _SetProviderStatus {
     TResult Function()? resetFilter,
     TResult Function(int index)? changeCurrentTablePageIndex,
     TResult Function(int index, bool value)? setProviderStatus,
-    TResult Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
     required TResult orElse(),
   }) {
     if (setProviderStatus != null) {
@@ -478,7 +606,13 @@ class _$SetProviderStatusImpl implements _SetProviderStatus {
     required TResult Function(_ChangeCurrentTablePageIndex value)
         changeCurrentTablePageIndex,
     required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
     required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
   }) {
     return setProviderStatus(this);
   }
@@ -490,7 +624,12 @@ class _$SetProviderStatusImpl implements _SetProviderStatus {
     TResult? Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
     TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
   }) {
     return setProviderStatus?.call(this);
   }
@@ -502,7 +641,12 @@ class _$SetProviderStatusImpl implements _SetProviderStatus {
     TResult Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
     TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
     required TResult orElse(),
   }) {
     if (setProviderStatus != null) {
@@ -525,12 +669,320 @@ abstract class _SetProviderStatus implements ProvidersEvent {
 }
 
 /// @nodoc
+abstract class _$$ApplyFilterImplCopyWith<$Res> {
+  factory _$$ApplyFilterImplCopyWith(
+          _$ApplyFilterImpl value, $Res Function(_$ApplyFilterImpl) then) =
+      __$$ApplyFilterImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ApplyFilterImplCopyWithImpl<$Res>
+    extends _$ProvidersEventCopyWithImpl<$Res, _$ApplyFilterImpl>
+    implements _$$ApplyFilterImplCopyWith<$Res> {
+  __$$ApplyFilterImplCopyWithImpl(
+      _$ApplyFilterImpl _value, $Res Function(_$ApplyFilterImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ApplyFilterImpl implements _ApplyFilter {
+  const _$ApplyFilterImpl();
+
+  @override
+  String toString() {
+    return 'ProvidersEvent.applyFilter()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ApplyFilterImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() resetFilter,
+    required TResult Function(int index) changeCurrentTablePageIndex,
+    required TResult Function(int index, bool value) setProviderStatus,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
+  }) {
+    return applyFilter();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? resetFilter,
+    TResult? Function(int index)? changeCurrentTablePageIndex,
+    TResult? Function(int index, bool value)? setProviderStatus,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
+  }) {
+    return applyFilter?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? resetFilter,
+    TResult Function(int index)? changeCurrentTablePageIndex,
+    TResult Function(int index, bool value)? setProviderStatus,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (applyFilter != null) {
+      return applyFilter();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResetFilter value) resetFilter,
+    required TResult Function(_ChangeCurrentTablePageIndex value)
+        changeCurrentTablePageIndex,
+    required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
+    required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
+  }) {
+    return applyFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ResetFilter value)? resetFilter,
+    TResult? Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
+  }) {
+    return applyFilter?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResetFilter value)? resetFilter,
+    TResult Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (applyFilter != null) {
+      return applyFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ApplyFilter implements ProvidersEvent {
+  const factory _ApplyFilter() = _$ApplyFilterImpl;
+}
+
+/// @nodoc
+abstract class _$$ApplyDateFilterImplCopyWith<$Res> {
+  factory _$$ApplyDateFilterImplCopyWith(_$ApplyDateFilterImpl value,
+          $Res Function(_$ApplyDateFilterImpl) then) =
+      __$$ApplyDateFilterImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ApplyDateFilterImplCopyWithImpl<$Res>
+    extends _$ProvidersEventCopyWithImpl<$Res, _$ApplyDateFilterImpl>
+    implements _$$ApplyDateFilterImplCopyWith<$Res> {
+  __$$ApplyDateFilterImplCopyWithImpl(
+      _$ApplyDateFilterImpl _value, $Res Function(_$ApplyDateFilterImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ApplyDateFilterImpl implements _ApplyDateFilter {
+  const _$ApplyDateFilterImpl();
+
+  @override
+  String toString() {
+    return 'ProvidersEvent.applyDateFilter()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ApplyDateFilterImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() resetFilter,
+    required TResult Function(int index) changeCurrentTablePageIndex,
+    required TResult Function(int index, bool value) setProviderStatus,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
+  }) {
+    return applyDateFilter();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? resetFilter,
+    TResult? Function(int index)? changeCurrentTablePageIndex,
+    TResult? Function(int index, bool value)? setProviderStatus,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
+  }) {
+    return applyDateFilter?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? resetFilter,
+    TResult Function(int index)? changeCurrentTablePageIndex,
+    TResult Function(int index, bool value)? setProviderStatus,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (applyDateFilter != null) {
+      return applyDateFilter();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResetFilter value) resetFilter,
+    required TResult Function(_ChangeCurrentTablePageIndex value)
+        changeCurrentTablePageIndex,
+    required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
+    required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
+  }) {
+    return applyDateFilter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ResetFilter value)? resetFilter,
+    TResult? Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
+  }) {
+    return applyDateFilter?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResetFilter value)? resetFilter,
+    TResult Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (applyDateFilter != null) {
+      return applyDateFilter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ApplyDateFilter implements ProvidersEvent {
+  const factory _ApplyDateFilter() = _$ApplyDateFilterImpl;
+}
+
+/// @nodoc
 abstract class _$$ChanegFilterDateImplCopyWith<$Res> {
   factory _$$ChanegFilterDateImplCopyWith(_$ChanegFilterDateImpl value,
           $Res Function(_$ChanegFilterDateImpl) then) =
       __$$ChanegFilterDateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({DateTime? startDate, DateTime? endDate});
+  $Res call({DateTime? startDate});
 }
 
 /// @nodoc
@@ -545,16 +997,11 @@ class __$$ChanegFilterDateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? startDate = freezed,
-    Object? endDate = freezed,
   }) {
     return _then(_$ChanegFilterDateImpl(
       startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      endDate: freezed == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
   }
@@ -563,17 +1010,14 @@ class __$$ChanegFilterDateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChanegFilterDateImpl implements _ChanegFilterDate {
-  const _$ChanegFilterDateImpl(
-      {required this.startDate, required this.endDate});
+  const _$ChanegFilterDateImpl({required this.startDate});
 
   @override
   final DateTime? startDate;
-  @override
-  final DateTime? endDate;
 
   @override
   String toString() {
-    return 'ProvidersEvent.changeFilterDate(startDate: $startDate, endDate: $endDate)';
+    return 'ProvidersEvent.changeFilterDate(startDate: $startDate)';
   }
 
   @override
@@ -582,12 +1026,11 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
         (other.runtimeType == runtimeType &&
             other is _$ChanegFilterDateImpl &&
             (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate));
+                other.startDate == startDate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, startDate, endDate);
+  int get hashCode => Object.hash(runtimeType, startDate);
 
   @JsonKey(ignore: true)
   @override
@@ -602,10 +1045,16 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
     required TResult Function() resetFilter,
     required TResult Function(int index) changeCurrentTablePageIndex,
     required TResult Function(int index, bool value) setProviderStatus,
-    required TResult Function(DateTime? startDate, DateTime? endDate)
-        changeFilterDate,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
   }) {
-    return changeFilterDate(startDate, endDate);
+    return changeFilterDate(startDate);
   }
 
   @override
@@ -614,9 +1063,16 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
     TResult? Function()? resetFilter,
     TResult? Function(int index)? changeCurrentTablePageIndex,
     TResult? Function(int index, bool value)? setProviderStatus,
-    TResult? Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
   }) {
-    return changeFilterDate?.call(startDate, endDate);
+    return changeFilterDate?.call(startDate);
   }
 
   @override
@@ -625,11 +1081,18 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
     TResult Function()? resetFilter,
     TResult Function(int index)? changeCurrentTablePageIndex,
     TResult Function(int index, bool value)? setProviderStatus,
-    TResult Function(DateTime? startDate, DateTime? endDate)? changeFilterDate,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
     required TResult orElse(),
   }) {
     if (changeFilterDate != null) {
-      return changeFilterDate(startDate, endDate);
+      return changeFilterDate(startDate);
     }
     return orElse();
   }
@@ -641,7 +1104,13 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
     required TResult Function(_ChangeCurrentTablePageIndex value)
         changeCurrentTablePageIndex,
     required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
     required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
   }) {
     return changeFilterDate(this);
   }
@@ -653,7 +1122,12 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
     TResult? Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
     TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
   }) {
     return changeFilterDate?.call(this);
   }
@@ -665,7 +1139,12 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
     TResult Function(_ChangeCurrentTablePageIndex value)?
         changeCurrentTablePageIndex,
     TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
     TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
     required TResult orElse(),
   }) {
     if (changeFilterDate != null) {
@@ -676,14 +1155,583 @@ class _$ChanegFilterDateImpl implements _ChanegFilterDate {
 }
 
 abstract class _ChanegFilterDate implements ProvidersEvent {
-  const factory _ChanegFilterDate(
-      {required final DateTime? startDate,
-      required final DateTime? endDate}) = _$ChanegFilterDateImpl;
+  const factory _ChanegFilterDate({required final DateTime? startDate}) =
+      _$ChanegFilterDateImpl;
 
   DateTime? get startDate;
-  DateTime? get endDate;
   @JsonKey(ignore: true)
   _$$ChanegFilterDateImplCopyWith<_$ChanegFilterDateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchProviderRequestsImplCopyWith<$Res> {
+  factory _$$FetchProviderRequestsImplCopyWith(
+          _$FetchProviderRequestsImpl value,
+          $Res Function(_$FetchProviderRequestsImpl) then) =
+      __$$FetchProviderRequestsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchProviderRequestsImplCopyWithImpl<$Res>
+    extends _$ProvidersEventCopyWithImpl<$Res, _$FetchProviderRequestsImpl>
+    implements _$$FetchProviderRequestsImplCopyWith<$Res> {
+  __$$FetchProviderRequestsImplCopyWithImpl(_$FetchProviderRequestsImpl _value,
+      $Res Function(_$FetchProviderRequestsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchProviderRequestsImpl implements _FetchProviderRequests {
+  const _$FetchProviderRequestsImpl();
+
+  @override
+  String toString() {
+    return 'ProvidersEvent.fetchProviderRequests()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchProviderRequestsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() resetFilter,
+    required TResult Function(int index) changeCurrentTablePageIndex,
+    required TResult Function(int index, bool value) setProviderStatus,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
+  }) {
+    return fetchProviderRequests();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? resetFilter,
+    TResult? Function(int index)? changeCurrentTablePageIndex,
+    TResult? Function(int index, bool value)? setProviderStatus,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
+  }) {
+    return fetchProviderRequests?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? resetFilter,
+    TResult Function(int index)? changeCurrentTablePageIndex,
+    TResult Function(int index, bool value)? setProviderStatus,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (fetchProviderRequests != null) {
+      return fetchProviderRequests();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResetFilter value) resetFilter,
+    required TResult Function(_ChangeCurrentTablePageIndex value)
+        changeCurrentTablePageIndex,
+    required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
+    required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
+  }) {
+    return fetchProviderRequests(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ResetFilter value)? resetFilter,
+    TResult? Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
+  }) {
+    return fetchProviderRequests?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResetFilter value)? resetFilter,
+    TResult Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (fetchProviderRequests != null) {
+      return fetchProviderRequests(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchProviderRequests implements ProvidersEvent {
+  const factory _FetchProviderRequests() = _$FetchProviderRequestsImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateProviderImplCopyWith<$Res> {
+  factory _$$UpdateProviderImplCopyWith(_$UpdateProviderImpl value,
+          $Res Function(_$UpdateProviderImpl) then) =
+      __$$UpdateProviderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, dynamic> body, String id, BuildContext context});
+}
+
+/// @nodoc
+class __$$UpdateProviderImplCopyWithImpl<$Res>
+    extends _$ProvidersEventCopyWithImpl<$Res, _$UpdateProviderImpl>
+    implements _$$UpdateProviderImplCopyWith<$Res> {
+  __$$UpdateProviderImplCopyWithImpl(
+      _$UpdateProviderImpl _value, $Res Function(_$UpdateProviderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? body = null,
+    Object? id = null,
+    Object? context = null,
+  }) {
+    return _then(_$UpdateProviderImpl(
+      body: null == body
+          ? _value._body
+          : body // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateProviderImpl implements _UpdateProvider {
+  const _$UpdateProviderImpl(
+      {required final Map<String, dynamic> body,
+      required this.id,
+      required this.context})
+      : _body = body;
+
+  final Map<String, dynamic> _body;
+  @override
+  Map<String, dynamic> get body {
+    if (_body is EqualUnmodifiableMapView) return _body;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_body);
+  }
+
+  @override
+  final String id;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ProvidersEvent.updateProvider(body: $body, id: $id, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateProviderImpl &&
+            const DeepCollectionEquality().equals(other._body, _body) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_body), id, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateProviderImplCopyWith<_$UpdateProviderImpl> get copyWith =>
+      __$$UpdateProviderImplCopyWithImpl<_$UpdateProviderImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() resetFilter,
+    required TResult Function(int index) changeCurrentTablePageIndex,
+    required TResult Function(int index, bool value) setProviderStatus,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
+  }) {
+    return updateProvider(body, id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? resetFilter,
+    TResult? Function(int index)? changeCurrentTablePageIndex,
+    TResult? Function(int index, bool value)? setProviderStatus,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
+  }) {
+    return updateProvider?.call(body, id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? resetFilter,
+    TResult Function(int index)? changeCurrentTablePageIndex,
+    TResult Function(int index, bool value)? setProviderStatus,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (updateProvider != null) {
+      return updateProvider(body, id, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResetFilter value) resetFilter,
+    required TResult Function(_ChangeCurrentTablePageIndex value)
+        changeCurrentTablePageIndex,
+    required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
+    required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
+  }) {
+    return updateProvider(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ResetFilter value)? resetFilter,
+    TResult? Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
+  }) {
+    return updateProvider?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResetFilter value)? resetFilter,
+    TResult Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (updateProvider != null) {
+      return updateProvider(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateProvider implements ProvidersEvent {
+  const factory _UpdateProvider(
+      {required final Map<String, dynamic> body,
+      required final String id,
+      required final BuildContext context}) = _$UpdateProviderImpl;
+
+  Map<String, dynamic> get body;
+  String get id;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$UpdateProviderImplCopyWith<_$UpdateProviderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteProviderImplCopyWith<$Res> {
+  factory _$$DeleteProviderImplCopyWith(_$DeleteProviderImpl value,
+          $Res Function(_$DeleteProviderImpl) then) =
+      __$$DeleteProviderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, BuildContext context});
+}
+
+/// @nodoc
+class __$$DeleteProviderImplCopyWithImpl<$Res>
+    extends _$ProvidersEventCopyWithImpl<$Res, _$DeleteProviderImpl>
+    implements _$$DeleteProviderImplCopyWith<$Res> {
+  __$$DeleteProviderImplCopyWithImpl(
+      _$DeleteProviderImpl _value, $Res Function(_$DeleteProviderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? context = null,
+  }) {
+    return _then(_$DeleteProviderImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteProviderImpl implements _DeleteProvider {
+  const _$DeleteProviderImpl({required this.id, required this.context});
+
+  @override
+  final String id;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ProvidersEvent.deleteProvider(id: $id, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteProviderImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteProviderImplCopyWith<_$DeleteProviderImpl> get copyWith =>
+      __$$DeleteProviderImplCopyWithImpl<_$DeleteProviderImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() resetFilter,
+    required TResult Function(int index) changeCurrentTablePageIndex,
+    required TResult Function(int index, bool value) setProviderStatus,
+    required TResult Function() applyFilter,
+    required TResult Function() applyDateFilter,
+    required TResult Function(DateTime? startDate) changeFilterDate,
+    required TResult Function() fetchProviderRequests,
+    required TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)
+        updateProvider,
+    required TResult Function(String id, BuildContext context) deleteProvider,
+  }) {
+    return deleteProvider(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? resetFilter,
+    TResult? Function(int index)? changeCurrentTablePageIndex,
+    TResult? Function(int index, bool value)? setProviderStatus,
+    TResult? Function()? applyFilter,
+    TResult? Function()? applyDateFilter,
+    TResult? Function(DateTime? startDate)? changeFilterDate,
+    TResult? Function()? fetchProviderRequests,
+    TResult? Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult? Function(String id, BuildContext context)? deleteProvider,
+  }) {
+    return deleteProvider?.call(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? resetFilter,
+    TResult Function(int index)? changeCurrentTablePageIndex,
+    TResult Function(int index, bool value)? setProviderStatus,
+    TResult Function()? applyFilter,
+    TResult Function()? applyDateFilter,
+    TResult Function(DateTime? startDate)? changeFilterDate,
+    TResult Function()? fetchProviderRequests,
+    TResult Function(
+            Map<String, dynamic> body, String id, BuildContext context)?
+        updateProvider,
+    TResult Function(String id, BuildContext context)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (deleteProvider != null) {
+      return deleteProvider(id, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ResetFilter value) resetFilter,
+    required TResult Function(_ChangeCurrentTablePageIndex value)
+        changeCurrentTablePageIndex,
+    required TResult Function(_SetProviderStatus value) setProviderStatus,
+    required TResult Function(_ApplyFilter value) applyFilter,
+    required TResult Function(_ApplyDateFilter value) applyDateFilter,
+    required TResult Function(_ChanegFilterDate value) changeFilterDate,
+    required TResult Function(_FetchProviderRequests value)
+        fetchProviderRequests,
+    required TResult Function(_UpdateProvider value) updateProvider,
+    required TResult Function(_DeleteProvider value) deleteProvider,
+  }) {
+    return deleteProvider(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ResetFilter value)? resetFilter,
+    TResult? Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult? Function(_SetProviderStatus value)? setProviderStatus,
+    TResult? Function(_ApplyFilter value)? applyFilter,
+    TResult? Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult? Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult? Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult? Function(_UpdateProvider value)? updateProvider,
+    TResult? Function(_DeleteProvider value)? deleteProvider,
+  }) {
+    return deleteProvider?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ResetFilter value)? resetFilter,
+    TResult Function(_ChangeCurrentTablePageIndex value)?
+        changeCurrentTablePageIndex,
+    TResult Function(_SetProviderStatus value)? setProviderStatus,
+    TResult Function(_ApplyFilter value)? applyFilter,
+    TResult Function(_ApplyDateFilter value)? applyDateFilter,
+    TResult Function(_ChanegFilterDate value)? changeFilterDate,
+    TResult Function(_FetchProviderRequests value)? fetchProviderRequests,
+    TResult Function(_UpdateProvider value)? updateProvider,
+    TResult Function(_DeleteProvider value)? deleteProvider,
+    required TResult orElse(),
+  }) {
+    if (deleteProvider != null) {
+      return deleteProvider(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteProvider implements ProvidersEvent {
+  const factory _DeleteProvider(
+      {required final String id,
+      required final BuildContext context}) = _$DeleteProviderImpl;
+
+  String get id;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$DeleteProviderImplCopyWith<_$DeleteProviderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -694,8 +1742,13 @@ mixin _$ProvidersState {
   int get currentTablePageIndex => throw _privateConstructorUsedError;
   List<CategoriesModel> get providerStatus =>
       throw _privateConstructorUsedError;
-  List<ProviderRequest> get providerRequests =>
+  List<ProviderRequestModel> get providerRequests =>
       throw _privateConstructorUsedError;
+  List<ProviderRequestModel> get filteredProviderRequests =>
+      throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoadingDelete => throw _privateConstructorUsedError;
+  bool get isLoadingUpdate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProvidersStateCopyWith<ProvidersState> get copyWith =>
@@ -713,7 +1766,11 @@ abstract class $ProvidersStateCopyWith<$Res> {
       DateTime? customEndDate,
       int currentTablePageIndex,
       List<CategoriesModel> providerStatus,
-      List<ProviderRequest> providerRequests});
+      List<ProviderRequestModel> providerRequests,
+      List<ProviderRequestModel> filteredProviderRequests,
+      bool isLoading,
+      bool isLoadingDelete,
+      bool isLoadingUpdate});
 }
 
 /// @nodoc
@@ -734,6 +1791,10 @@ class _$ProvidersStateCopyWithImpl<$Res, $Val extends ProvidersState>
     Object? currentTablePageIndex = null,
     Object? providerStatus = null,
     Object? providerRequests = null,
+    Object? filteredProviderRequests = null,
+    Object? isLoading = null,
+    Object? isLoadingDelete = null,
+    Object? isLoadingUpdate = null,
   }) {
     return _then(_value.copyWith(
       customStartDate: freezed == customStartDate
@@ -755,7 +1816,23 @@ class _$ProvidersStateCopyWithImpl<$Res, $Val extends ProvidersState>
       providerRequests: null == providerRequests
           ? _value.providerRequests
           : providerRequests // ignore: cast_nullable_to_non_nullable
-              as List<ProviderRequest>,
+              as List<ProviderRequestModel>,
+      filteredProviderRequests: null == filteredProviderRequests
+          ? _value.filteredProviderRequests
+          : filteredProviderRequests // ignore: cast_nullable_to_non_nullable
+              as List<ProviderRequestModel>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingDelete: null == isLoadingDelete
+          ? _value.isLoadingDelete
+          : isLoadingDelete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingUpdate: null == isLoadingUpdate
+          ? _value.isLoadingUpdate
+          : isLoadingUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -773,7 +1850,11 @@ abstract class _$$ProvidersStateImplCopyWith<$Res>
       DateTime? customEndDate,
       int currentTablePageIndex,
       List<CategoriesModel> providerStatus,
-      List<ProviderRequest> providerRequests});
+      List<ProviderRequestModel> providerRequests,
+      List<ProviderRequestModel> filteredProviderRequests,
+      bool isLoading,
+      bool isLoadingDelete,
+      bool isLoadingUpdate});
 }
 
 /// @nodoc
@@ -792,6 +1873,10 @@ class __$$ProvidersStateImplCopyWithImpl<$Res>
     Object? currentTablePageIndex = null,
     Object? providerStatus = null,
     Object? providerRequests = null,
+    Object? filteredProviderRequests = null,
+    Object? isLoading = null,
+    Object? isLoadingDelete = null,
+    Object? isLoadingUpdate = null,
   }) {
     return _then(_$ProvidersStateImpl(
       customStartDate: freezed == customStartDate
@@ -813,7 +1898,23 @@ class __$$ProvidersStateImplCopyWithImpl<$Res>
       providerRequests: null == providerRequests
           ? _value._providerRequests
           : providerRequests // ignore: cast_nullable_to_non_nullable
-              as List<ProviderRequest>,
+              as List<ProviderRequestModel>,
+      filteredProviderRequests: null == filteredProviderRequests
+          ? _value._filteredProviderRequests
+          : filteredProviderRequests // ignore: cast_nullable_to_non_nullable
+              as List<ProviderRequestModel>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingDelete: null == isLoadingDelete
+          ? _value.isLoadingDelete
+          : isLoadingDelete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadingUpdate: null == isLoadingUpdate
+          ? _value.isLoadingUpdate
+          : isLoadingUpdate // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -826,9 +1927,14 @@ class _$ProvidersStateImpl implements _ProvidersState {
       required this.customEndDate,
       required this.currentTablePageIndex,
       required final List<CategoriesModel> providerStatus,
-      required final List<ProviderRequest> providerRequests})
+      required final List<ProviderRequestModel> providerRequests,
+      required final List<ProviderRequestModel> filteredProviderRequests,
+      required this.isLoading,
+      required this.isLoadingDelete,
+      required this.isLoadingUpdate})
       : _providerStatus = providerStatus,
-        _providerRequests = providerRequests;
+        _providerRequests = providerRequests,
+        _filteredProviderRequests = filteredProviderRequests;
 
   @override
   final DateTime? customStartDate;
@@ -844,18 +1950,34 @@ class _$ProvidersStateImpl implements _ProvidersState {
     return EqualUnmodifiableListView(_providerStatus);
   }
 
-  final List<ProviderRequest> _providerRequests;
+  final List<ProviderRequestModel> _providerRequests;
   @override
-  List<ProviderRequest> get providerRequests {
+  List<ProviderRequestModel> get providerRequests {
     if (_providerRequests is EqualUnmodifiableListView)
       return _providerRequests;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_providerRequests);
   }
 
+  final List<ProviderRequestModel> _filteredProviderRequests;
+  @override
+  List<ProviderRequestModel> get filteredProviderRequests {
+    if (_filteredProviderRequests is EqualUnmodifiableListView)
+      return _filteredProviderRequests;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filteredProviderRequests);
+  }
+
+  @override
+  final bool isLoading;
+  @override
+  final bool isLoadingDelete;
+  @override
+  final bool isLoadingUpdate;
+
   @override
   String toString() {
-    return 'ProvidersState(customStartDate: $customStartDate, customEndDate: $customEndDate, currentTablePageIndex: $currentTablePageIndex, providerStatus: $providerStatus, providerRequests: $providerRequests)';
+    return 'ProvidersState(customStartDate: $customStartDate, customEndDate: $customEndDate, currentTablePageIndex: $currentTablePageIndex, providerStatus: $providerStatus, providerRequests: $providerRequests, filteredProviderRequests: $filteredProviderRequests, isLoading: $isLoading, isLoadingDelete: $isLoadingDelete, isLoadingUpdate: $isLoadingUpdate)';
   }
 
   @override
@@ -872,7 +1994,15 @@ class _$ProvidersStateImpl implements _ProvidersState {
             const DeepCollectionEquality()
                 .equals(other._providerStatus, _providerStatus) &&
             const DeepCollectionEquality()
-                .equals(other._providerRequests, _providerRequests));
+                .equals(other._providerRequests, _providerRequests) &&
+            const DeepCollectionEquality().equals(
+                other._filteredProviderRequests, _filteredProviderRequests) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isLoadingDelete, isLoadingDelete) ||
+                other.isLoadingDelete == isLoadingDelete) &&
+            (identical(other.isLoadingUpdate, isLoadingUpdate) ||
+                other.isLoadingUpdate == isLoadingUpdate));
   }
 
   @override
@@ -882,7 +2012,11 @@ class _$ProvidersStateImpl implements _ProvidersState {
       customEndDate,
       currentTablePageIndex,
       const DeepCollectionEquality().hash(_providerStatus),
-      const DeepCollectionEquality().hash(_providerRequests));
+      const DeepCollectionEquality().hash(_providerRequests),
+      const DeepCollectionEquality().hash(_filteredProviderRequests),
+      isLoading,
+      isLoadingDelete,
+      isLoadingUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -894,12 +2028,15 @@ class _$ProvidersStateImpl implements _ProvidersState {
 
 abstract class _ProvidersState implements ProvidersState {
   const factory _ProvidersState(
-          {required final DateTime? customStartDate,
-          required final DateTime? customEndDate,
-          required final int currentTablePageIndex,
-          required final List<CategoriesModel> providerStatus,
-          required final List<ProviderRequest> providerRequests}) =
-      _$ProvidersStateImpl;
+      {required final DateTime? customStartDate,
+      required final DateTime? customEndDate,
+      required final int currentTablePageIndex,
+      required final List<CategoriesModel> providerStatus,
+      required final List<ProviderRequestModel> providerRequests,
+      required final List<ProviderRequestModel> filteredProviderRequests,
+      required final bool isLoading,
+      required final bool isLoadingDelete,
+      required final bool isLoadingUpdate}) = _$ProvidersStateImpl;
 
   @override
   DateTime? get customStartDate;
@@ -910,7 +2047,15 @@ abstract class _ProvidersState implements ProvidersState {
   @override
   List<CategoriesModel> get providerStatus;
   @override
-  List<ProviderRequest> get providerRequests;
+  List<ProviderRequestModel> get providerRequests;
+  @override
+  List<ProviderRequestModel> get filteredProviderRequests;
+  @override
+  bool get isLoading;
+  @override
+  bool get isLoadingDelete;
+  @override
+  bool get isLoadingUpdate;
   @override
   @JsonKey(ignore: true)
   _$$ProvidersStateImplCopyWith<_$ProvidersStateImpl> get copyWith =>

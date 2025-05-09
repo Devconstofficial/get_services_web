@@ -19,6 +19,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/bell.svg
   String get bell => 'assets/images/bell.svg';
 
+  /// File path: assets/images/bgImage.png
+  AssetGenImage get bgImage => const AssetGenImage('assets/images/bgImage.png');
+
   /// File path: assets/images/bin.png
   AssetGenImage get bin => const AssetGenImage('assets/images/bin.png');
 
@@ -30,6 +33,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/check.svg
   String get check => 'assets/images/check.svg';
+
+  /// File path: assets/images/circle_logo.png
+  AssetGenImage get circleLogo =>
+      const AssetGenImage('assets/images/circle_logo.png');
 
   /// File path: assets/images/close.svg
   String get close => 'assets/images/close.svg';
@@ -99,10 +106,12 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
         addImage,
         bell,
+        bgImage,
         bin,
         binIcon,
         chartUp,
         check,
+        circleLogo,
         close,
         dashboardPendingRequests,
         dashboardTotalProviders,

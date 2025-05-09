@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 const Color secondaryColor = Color(0xffF5F6FA);
 const Color primaryColor = Color(0xff213F4D);
@@ -19,3 +19,15 @@ const Color lightOrangeColor = Color(0xffFF8F6D);
 const Color tableHeaderColor = Color(0xffF1f4f9);
 const Color arrowColor = Color(0xffE7E9EE);
 const Color borderColor = Color(0xff9a9a96);
+const Color greyColor = Color(0xffCBCAD7);
+const Color greyShade1Color = Color(0xff9A9A96);
+
+double getWidth(double pixelValue) {
+  double baseScreenWidth = 1440.0;
+  return (pixelValue / baseScreenWidth) * 100.w;
+}
+
+double getHeight(double pixelValue) {
+  double baseScreenHeight = 983.0;
+  return (pixelValue / baseScreenHeight) * 100.h;
+}

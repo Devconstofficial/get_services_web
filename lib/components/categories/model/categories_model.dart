@@ -1,28 +1,41 @@
 class CategoriesData {
+  final String categoryId;
   final String category;
   final String imagePath;
   final bool isUpdating;
-  final List<String> subCategory;
+  final List<SubCategoryData> subCategory;
 
   CategoriesData({
+    required this.categoryId,
     required this.category,
     required this.imagePath,
     required this.isUpdating,
     required this.subCategory,
   });
 
-  // Copy with method
   CategoriesData copyWith({
+    String? categoryId,
     String? category,
     String? imagePath,
     bool? isUpdating,
-    List<String>? subCategory,
+    List<SubCategoryData>? subCategory,
   }) {
     return CategoriesData(
+      categoryId: categoryId ?? this.categoryId,
       category: category ?? this.category,
-      isUpdating: isUpdating ?? this.isUpdating,
       imagePath: imagePath ?? this.imagePath,
-      subCategory: subCategory ?? List.from(this.subCategory),
+      isUpdating: isUpdating ?? this.isUpdating,
+      subCategory: subCategory ?? this.subCategory,
     );
   }
+}
+
+class SubCategoryData {
+  final String subCategoryId;
+  final String subCategoryName;
+
+  SubCategoryData({
+    required this.subCategoryId,
+    required this.subCategoryName,
+  });
 }

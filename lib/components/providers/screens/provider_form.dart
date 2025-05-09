@@ -31,6 +31,7 @@ class _ProviderFormState extends State<ProviderForm> {
       setState(() {});
     });
     providersBloc = context.read<ProvidersBloc>();
+    providersBloc.add(const ProvidersEvent.fetchProviderRequests());
   }
 
   @override
@@ -192,8 +193,25 @@ class _ProviderFormState extends State<ProviderForm> {
                   ),
                   SizedBox(height: Adaptive.sp(14)),
                   Expanded(
-                      child:
-                          _buildProviderTable(state.providerRequests, state)),
+                      child: state.isLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: primaryColor,
+                              ),
+                            )
+                          : state.filteredProviderRequests.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    "No providers",
+                                    style: GoogleFonts.nunitoSans(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                )
+                              : _buildProviderTable(
+                                  state.filteredProviderRequests, state)),
                 ],
               ),
             );
@@ -204,7 +222,7 @@ class _ProviderFormState extends State<ProviderForm> {
   }
 
   Widget _buildProviderTable(
-      List<ProviderRequest> requests, ProvidersState state) {
+      List<ProviderRequestModel> requests, ProvidersState state) {
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: Adaptive.sp(12), horizontal: Adaptive.sp(14)),
@@ -236,12 +254,6 @@ class _ProviderFormState extends State<ProviderForm> {
                 Expanded(
                     child: Center(
                         child: Text('location'.tr(),
-                            style: GoogleFonts.nunitoSans(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 11.5.sp)))),
-                Expanded(
-                    child: Center(
-                        child: Text('category'.tr(),
                             style: GoogleFonts.nunitoSans(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11.5.sp)))),
@@ -296,9 +308,9 @@ class _ProviderFormState extends State<ProviderForm> {
                   DataColumn(label: Text("")),
                   DataColumn(label: Text("")),
                   DataColumn(label: Text("")),
-                  DataColumn(label: Text("")),
                 ],
-                source: ProviderDataSource(requests, context),
+                source: ProviderDataSource(
+                    requests, context, context.read<ProvidersBloc>()),
                 rowsPerPage: 5,
                 showFirstLastButtons: false,
               ),
@@ -598,6 +610,9 @@ class _ProviderFormState extends State<ProviderForm> {
                         Center(
                           child: InkWell(
                             onTap: () {
+                              context
+                                  .read<ProvidersBloc>()
+                                  .add(const ProvidersEvent.applyFilter());
                               Navigator.pop(context);
                             },
                             child: Container(
@@ -782,7 +797,7 @@ class _ProviderFormState extends State<ProviderForm> {
                                   onDaySelected: (date, events) {
                                     providersBloc.add(
                                         ProvidersEvent.changeFilterDate(
-                                            startDate: date, endDate: date));
+                                            startDate: date));
                                   },
                                   daysOfWeekStyle: DaysOfWeekStyle(
                                       weekdayStyle: GoogleFonts.nunitoSans(
@@ -819,6 +834,9 @@ class _ProviderFormState extends State<ProviderForm> {
                               Center(
                                 child: InkWell(
                                   onTap: () {
+                                    providersBloc.add(
+                                        const ProvidersEvent.applyDateFilter());
+
                                     Navigator.pop(context);
                                   },
                                   child: Container(
@@ -865,12 +883,14 @@ class _ProviderFormState extends State<ProviderForm> {
 }
 
 class ProviderDataSource extends DataTableSource {
-  final List<ProviderRequest> providerRequests;
-  final ProvidersBloc providersBloc = ProvidersBloc();
+  final List<ProviderRequestModel> providerRequests;
   BuildContext context;
+  String? selectedStatus;
+  ProvidersBloc providersBloc;
 
-  ProviderDataSource(this.providerRequests, this.context);
-  Future<void> _displayStatusDialog(BuildContext context) async {
+  ProviderDataSource(this.providerRequests, this.context, this.providersBloc);
+  Future<void> _displayStatusDialog(
+      BuildContext context, String providerId) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -933,7 +953,7 @@ class ProviderDataSource extends DataTableSource {
                           );
                         }).toList(),
                         onChanged: (String? value) {
-                          // Handle dropdown value change
+                          selectedStatus = value;
                         },
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -982,30 +1002,55 @@ class ProviderDataSource extends DataTableSource {
                         isExpanded: true,
                       ),
                       SizedBox(height: Adaptive.sp(20)),
-                      Center(
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: Adaptive.sp(8),
-                                horizontal: Adaptive.sp(16)),
-                            decoration: BoxDecoration(
+                      state.isLoadingUpdate
+                          ? const Center(
+                              child: CircularProgressIndicator(
                                 color: primaryColor,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: primaryColor)),
-                            child: Text(
-                              "applyNow".tr(),
-                              style: GoogleFonts.nunitoSans(
-                                color: Colors.white,
-                                fontSize: 11.5.sp,
-                                fontWeight: FontWeight.w600,
                               ),
-                            ),
-                          ),
-                        ),
-                      )
+                            )
+                          : Center(
+                              child: InkWell(
+                                onTap: () {
+                                  if (selectedStatus != null) {
+                                    String? updatedStatus = selectedStatus ==
+                                            "active".tr()
+                                        ? "verified"
+                                        : selectedStatus == "pending".tr()
+                                            ? "pending"
+                                            : selectedStatus == "rejected".tr()
+                                                ? "rejected"
+                                                : selectedStatus ==
+                                                        "onHold".tr()
+                                                    ? "pending"
+                                                    : selectedStatus;
+
+                                    providersBloc
+                                        .add(ProvidersEvent.updateProvider(
+                                      body: {"status": updatedStatus},
+                                      id: providerId,
+                                      context: context,
+                                    ));
+                                  }
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: Adaptive.sp(8),
+                                      horizontal: Adaptive.sp(16)),
+                                  decoration: BoxDecoration(
+                                      color: primaryColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(color: primaryColor)),
+                                  child: Text(
+                                    "applyNow".tr(),
+                                    style: GoogleFonts.nunitoSans(
+                                      color: Colors.white,
+                                      fontSize: 11.5.sp,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
                     ],
                   ),
                 );
@@ -1017,7 +1062,7 @@ class ProviderDataSource extends DataTableSource {
     );
   }
 
-  Future<void> _displayDeleteDialog() async {
+  Future<void> _displayDeleteDialog(String providerId) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -1028,7 +1073,6 @@ class ProviderDataSource extends DataTableSource {
                 builder: (context, state) {
               return Container(
                 width: Adaptive.sp(66),
-                
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -1044,64 +1088,89 @@ class ProviderDataSource extends DataTableSource {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                   
                     SizedBox(height: Adaptive.sp(10)),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                    vertical: Adaptive.sp(12), horizontal: Adaptive.sp(16)),
+                          vertical: Adaptive.sp(12),
+                          horizontal: Adaptive.sp(16)),
                       child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
                         },
                         child: Align(
                           alignment: Alignment.topRight,
                           child: Icon(
-                            Icons.close, color: Color(0xFF858D9D),
+                            Icons.close,
+                            color: Color(0xFF858D9D),
                           ),
                         ),
                       ),
                     ),
                     Center(
-                      child: Image.asset(Assets.images.bin.path, width: Adaptive.w(13), height: Adaptive.h(13),),
+                      child: Image.asset(
+                        Assets.images.bin.path,
+                        width: Adaptive.w(13),
+                        height: Adaptive.h(13),
+                      ),
                     ),
-                    Center(child: Text("confirmDelete".tr(), style: GoogleFonts.nunitoSans(
-                            color: Colors.black,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                          ),),),
+                    Center(
+                      child: Text(
+                        "confirmDelete".tr(),
+                        style: GoogleFonts.nunitoSans(
+                          color: Colors.black,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
                     SizedBox(height: Adaptive.sp(5)),
-                    Center(child: Text("deleteMessage".tr(), textAlign: TextAlign.center, style: GoogleFonts.nunitoSans(
-                            color: Color(0xFFABABAB),
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                          ),),),
+                    Center(
+                      child: Text(
+                        "deleteMessage".tr(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.nunitoSans(
+                          color: Color(0xFFABABAB),
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                     SizedBox(height: Adaptive.sp(15)),
                     Divider(),
                     SizedBox(height: Adaptive.sp(15)),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: Adaptive.sp(8),
-                              horizontal: Adaptive.sp(16)),
-                          decoration: BoxDecoration(
+                    state.isLoadingDelete
+                        ? const Center(
+                            child: CircularProgressIndicator(
                               color: primaryColor,
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: primaryColor)),
-                          child: Text(
-                            "apply".tr(),
-                            style: GoogleFonts.nunitoSans(
-                              color: Colors.white,
-                              fontSize: 11.5.sp,
-                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        : Center(
+                            child: InkWell(
+                              onTap: () {
+                                providersBloc.add(ProvidersEvent.deleteProvider(
+                                  id: providerId,
+                                  context: context,
+                                ));
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: Adaptive.sp(8),
+                                    horizontal: Adaptive.sp(16)),
+                                decoration: BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: primaryColor)),
+                                child: Text(
+                                  "apply".tr(),
+                                  style: GoogleFonts.nunitoSans(
+                                    color: Colors.white,
+                                    fontSize: 11.5.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
                     SizedBox(height: Adaptive.sp(15)),
                   ],
                 ),
@@ -1116,27 +1185,24 @@ class ProviderDataSource extends DataTableSource {
   @override
   DataRow getRow(int index) {
     final request = providerRequests[index];
+
+    final locationsList =
+        request.mapLocations.map((location) => location.id).join(', ');
     return DataRow(cells: [
       DataCell(Center(
-          child: Text(request.providerId,
+          child: Text(request.id,
               style: GoogleFonts.nunitoSans(
                   fontWeight: FontWeight.w500,
                   color: appBlackColor.withOpacity(0.9),
                   fontSize: 11.sp)))),
       DataCell(Center(
-          child: Text(request.providerName,
+          child: Text(request.businessName,
               style: GoogleFonts.nunitoSans(
                   fontWeight: FontWeight.w500,
                   color: appBlackColor.withOpacity(0.9),
                   fontSize: 11.sp)))),
       DataCell(Center(
-          child: Text(request.location,
-              style: GoogleFonts.nunitoSans(
-                  fontWeight: FontWeight.w500,
-                  color: appBlackColor.withOpacity(0.9),
-                  fontSize: 11.sp)))),
-      DataCell(Center(
-          child: Text(request.category,
+          child: Text(locationsList,
               style: GoogleFonts.nunitoSans(
                   fontWeight: FontWeight.w500,
                   color: appBlackColor.withOpacity(0.9),
@@ -1145,9 +1211,9 @@ class ProviderDataSource extends DataTableSource {
           child: Container(
               padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 6),
               decoration: BoxDecoration(
-                  color: request.status == "active".tr()
+                  color: request.status == "verified"
                       ? greenBlueColor.withOpacity(0.2)
-                      : request.status == "pending".tr()
+                      : request.status == "pending"
                           ? purpleColor.withOpacity(0.2)
                           : redColor.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(4)),
@@ -1155,9 +1221,9 @@ class ProviderDataSource extends DataTableSource {
                   style: GoogleFonts.nunitoSans(
                     fontWeight: FontWeight.w500,
                     fontSize: 10.sp,
-                    color: request.status == "active".tr()
+                    color: request.status == "verified"
                         ? greenBlueColor.withOpacity(1)
-                        : request.status == "pending".tr()
+                        : request.status == "pending"
                             ? purpleColor.withOpacity(1)
                             : redColor,
                   ))))),
@@ -1177,7 +1243,7 @@ class ProviderDataSource extends DataTableSource {
                       const VisualDensity(horizontal: 2, vertical: -4),
                   icon: SvgPicture.asset(Assets.images.editIcon),
                   onPressed: () {
-                    _displayStatusDialog(context);
+                    _displayStatusDialog(context, request.id);
                   }),
               Container(
                 color: lightGrayColor,
@@ -1191,7 +1257,7 @@ class ProviderDataSource extends DataTableSource {
                       const VisualDensity(horizontal: 2, vertical: -4),
                   icon: SvgPicture.asset(Assets.images.binIcon),
                   onPressed: () {
-                    _displayDeleteDialog();
+                    _displayDeleteDialog(request.id);
                   }),
             ],
           ),
